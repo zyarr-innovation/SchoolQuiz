@@ -1,0 +1,27 @@
+<div class="main-class">
+    <mat-card class="main-card">
+        <mat-card-header class="main-card-header">
+            <mat-card-title>Zyarr Quiz</mat-card-title>
+            <mat-card-subtitle>Admin Control</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content class="main-card-content">
+            <mat-divider></mat-divider>
+            <mat-card class="sub-card">
+                <mat-card-header class="sub-card-header">
+                    <mat-card-title>{{currentQuestion.question}}</mat-card-title>
+                </mat-card-header>
+                <mat-card-content class="sub-card-content">
+                    <div *ngFor="let eachOption of currentQuestion.options">
+                        {{eachOption}}
+                    </div>
+                </mat-card-content>
+            </mat-card>
+            <mat-divider></mat-divider>
+        </mat-card-content>
+        <mat-card-actions class="main-card-actions">
+            <button mat-raised-button color="primary">Start</button>
+            <button mat-raised-button color="primary">Next</button>
+            <button mat-raised-button color="primary">End</button>
+        </mat-card-actions>
+    </mat-card>
+</div>
