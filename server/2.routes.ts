@@ -15,7 +15,7 @@ export function setupQuizRoutes(quiz: Quiz) {
 
         nextQuestion: (req: Request, res: Response) => {
             quiz.nextQuestion();
-            res.status(200).json({ message: 'Moving to the next question!' });
+            res.status(200).json({ message: 'Next Question!' });
         },
     };
 }

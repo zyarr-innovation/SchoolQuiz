@@ -1,14 +1,18 @@
 import { Socket } from 'socket.io';
 import { Server as SocketIOServer } from 'socket.io';
+import { QuestionList } from './server-data/questions/question-list';
+import { IQuestion } from './server-data/questions/questionCollection';
 
 export class Quiz {
     private io: SocketIOServer;
     private currentQuestion: number = 0;
     private quizRunning: boolean = false;
+    private questionList: QuestionList
 
     constructor(io: SocketIOServer) {
         this.io = io;
         this.setupSocketHandlers();
+        this.questionList = new QuestionList();
     }
 
     private setupSocketHandlers() {
@@ -32,16 +36,18 @@ export class Quiz {
     public startQuiz() {
         this.quizRunning = true;
         this.currentQuestion = 0;
-        this.io.emit('message', 'Quiz has started!');
+        this.io.emit('msgStartQuiz', 'Quiz has started!');
     }
 
     public stopQuiz() {
         this.quizRunning = false;
-        this.io.emit('message', 'Quiz has stopped!');
+        this.io.emit('msgStopQuiz', 'Quiz has stopped!');
     }
 
     public nextQuestion() {
         this.currentQuestion++;
-        this.io.emit('message', `Moving to question ${this.currentQuestion}`);
+        let currentQuestion: IQuestion = this.questionList.getCurrent()
+        this.io.emit('msgNextQuestion', `${this.currentQuestion}`);
+        this.questionList.moveToNext();
     }
 }

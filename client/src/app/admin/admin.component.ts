@@ -12,4 +12,16 @@ export class AdminComponent {
     options: ["Mount Everest", "Mount Abu", "Mount Isa", "Mount Musa"],
     answer: 1
   }
+
+  startQuiz() {
+    
+  }
+
+  stopQuiz() {
+
+  }
+
+  nextQuiz() {
+
+  }
 }
