@@ -5,7 +5,6 @@ import { IQuestion } from './server-data/questions/questionCollection';
 
 export class Quiz {
     private io: SocketIOServer;
-    private currentQuestion: number = 0;
     private quizRunning: boolean = false;
     private questionList: QuestionList
 
@@ -19,23 +18,23 @@ export class Quiz {
         this.io.on('connection', (socket: Socket) => {
             console.log(`A user connected: ${socket.id}`);
 
-            socket.on('startquiz', () => {
-                this.startQuiz();
-            });
+            //Server wont subscribe to this
+            // socket.on('startquiz', () => {
+            //     this.startQuiz();
+            // });
 
-            socket.on('stopquiz', () => {
-                this.stopQuiz();
-            });
+            // socket.on('stopquiz', () => {
+            //     this.stopQuiz();
+            // });
 
-            socket.on('nextquestion', () => {
-                this.nextQuestion();
-            });
+            // socket.on('nextquestion', () => {
+            //     this.nextQuestion();
+            // });
         });
     }
 
     public startQuiz() {
         this.quizRunning = true;
-        this.currentQuestion = 0;
         this.io.emit('msgStartQuiz', 'Quiz has started!');
     }
 
@@ -45,9 +44,8 @@ export class Quiz {
     }
 
     public nextQuestion() {
-        this.currentQuestion++;
-        let currentQuestion: IQuestion = this.questionList.getCurrent()
-        this.io.emit('msgNextQuestion', `${this.currentQuestion}`);
+        let currentQuestion: IQuestion = this.questionList.getCurrent();
+        this.io.emit('msgNextQuestion', currentQuestion);
         this.questionList.moveToNext();
     }
 }

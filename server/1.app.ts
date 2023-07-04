@@ -3,8 +3,10 @@ import path from 'path';
 import http from 'http';
 import { Server as SocketIOServer } from 'socket.io';
 import { Quiz } from './3.quiz';
-import { setupQuizRoutes } from './2.routes';
+import { setupQuizRoutes } from './2.quiz-routes';
 import mime from 'mime';
+import { ParticipantList } from './3.participant';
+import { setupParticipantRoutes } from './2.participant-routes';
 
 export class App {
   private app: express.Application;
@@ -13,12 +15,11 @@ export class App {
   private server: http.Server;
   private io: SocketIOServer;
   private quiz: Quiz;
+  private participantList: ParticipantList;
 
   constructor(port: number) {
     this.app = express();
     this.staticPath = path.resolve(__dirname, '../../client/dist/client');
-
-    this.setupMiddleware();
 
     this.port = port;
     this.server = http.createServer(this.app);
@@ -29,9 +30,9 @@ export class App {
       },
     });
     this.quiz = new Quiz(this.io);
+    this.participantList = new ParticipantList(this.io);
 
-
-
+    this.setupMiddleware();
   }
 
   private setupContentSecurity() {
@@ -81,11 +82,15 @@ export class App {
   private setupRoutes() {
     // Serve static files, same as before
 
-    const routes = setupQuizRoutes(this.quiz);
+    const quizRoutes = setupQuizRoutes(this.quiz);
+    this.app.get('/api/startquiz', quizRoutes.startQuiz);
+    this.app.get('/api/stopquiz', quizRoutes.stopQuiz);
+    this.app.get('/api/nextquestion', quizRoutes.nextQuestion);
 
-    this.app.get('/api/startquiz', routes.startQuiz);
-    this.app.get('/api/stopquiz', routes.stopQuiz);
-    this.app.get('/api/nextquestion', routes.nextQuestion);
+    const participantRoutes = setupParticipantRoutes(this.participantList);
+    this.app.get('/api/addparticipant', participantRoutes.addParticipant);
+    this.app.get('/api/removeparticipant', participantRoutes.removeParticipant);
+    this.app.get('/api/getparticipantlist', participantRoutes.getParticipantList);
 
     this.app.get('*', (req: Request, res: Response) => {
       res.sendFile(path.join(this.staticPath, 'index.html'));

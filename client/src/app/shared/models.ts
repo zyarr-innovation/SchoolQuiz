@@ -1,13 +1,13 @@
 export interface IQuestion {
     question: string;
-    options: string[];
+    optionList: string[];
     answer: number
 }
 
 export interface IParticipant {
+    id: number;
     name: string;
     email: string;
-    Id: number;
-    Score?: number;
-    TimeSpent?: Date;
+    score?: number;
+    timespent?: number;
 };

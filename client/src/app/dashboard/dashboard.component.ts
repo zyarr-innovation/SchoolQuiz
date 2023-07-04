@@ -9,7 +9,7 @@ import { IQuestion } from '../shared/models';
 export class DashboardComponent {
   currentQuestion: IQuestion = {
     question: "Which is the highest peak",
-    options: ["Mount Everest", "Mount Abu", "Mount Isa", "Mount Musa"],
+    optionList: ["Mount Everest", "Mount Abu", "Mount Isa", "Mount Musa"],
     answer: 1
   }
 }

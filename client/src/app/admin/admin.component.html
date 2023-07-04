@@ -6,16 +6,25 @@
         </mat-card-header>
         <mat-card-content class="main-card-content">
             <mat-divider></mat-divider>
-            <mat-card class="sub-card">
-                <mat-card-header class="sub-card-header">
-                    <mat-card-title>{{currentQuestion.question}}</mat-card-title>
-                </mat-card-header>
-                <mat-card-content class="sub-card-content">
-                    <div *ngFor="let eachOption of currentQuestion.options">
-                        {{eachOption}}
-                    </div>
-                </mat-card-content>
-            </mat-card>
+            <div *ngIf="currentMessage$">
+                <mat-card class=" sub-card">
+                    <mat-card-header class="sub-card-header">
+                        <mat-card-title>{{currentMessage$}}</mat-card-title>
+                    </mat-card-header>
+                </mat-card>
+            </div>
+            <div *ngIf="!currentMessage$">
+                <mat-card class="sub-card">
+                    <mat-card-header class="sub-card-header">
+                        <mat-card-title>{{currentQuestion$.question}}</mat-card-title>
+                    </mat-card-header>
+                    <mat-card-content class="sub-card-content">
+                        <div *ngFor="let eachOption of currentQuestion$.optionList">
+                            {{eachOption}}
+                        </div>
+                    </mat-card-content>
+                </mat-card>
+            </div>
             <mat-divider></mat-divider>
         </mat-card-content>
         <mat-card-actions class="main-card-actions">
