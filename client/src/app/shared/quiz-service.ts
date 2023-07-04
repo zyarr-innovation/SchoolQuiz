@@ -42,6 +42,9 @@ export class QuizService {
     nextQuestion() {
         return this.http.get<IQuestion>("http://localhost:3000/api/nextquestion");
     }
+    anwerQuestion() {
+        return this.http.get<IQuestion>("http://localhost:3000/api/answerquestion");
+    }
 
     updateScore(
         inParticipantId: number,

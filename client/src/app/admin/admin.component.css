@@ -1,0 +1,19 @@
+.option-container {
+    display: flex;
+    /* Optional, use this if you want the button to stretch the full width even if it contains no other elements */
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.option {
+    height: 40px;
+    margin-top: 15px !important;
+    font-size: x-large;
+}
+
+.highlighted-button {
+    /* Add styles to highlight the button */
+    background-color: yellow;
+    color: black;
+    /* Add other styles as needed */
+}

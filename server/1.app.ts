@@ -86,6 +86,7 @@ export class App {
     this.app.get('/api/startquiz', quizRoutes.startQuiz);
     this.app.get('/api/stopquiz', quizRoutes.stopQuiz);
     this.app.get('/api/nextquestion', quizRoutes.nextQuestion);
+    this.app.get('/api/answerquestion', quizRoutes.answerQuestion);
 
     const participantRoutes = setupParticipantRoutes(this.participantList);
     this.app.get('/api/addparticipant', participantRoutes.addParticipant);

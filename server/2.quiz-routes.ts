@@ -17,5 +17,10 @@ export function setupQuizRoutes(quiz: Quiz) {
             quiz.nextQuestion();
             res.status(200).json({ message: 'Next Question!' });
         },
+
+        answerQuestion: (req: Request, res: Response) => {
+            quiz.answerQuestion();
+            res.status(200).json({ message: 'Answer Question!' });
+        },
     };
 }

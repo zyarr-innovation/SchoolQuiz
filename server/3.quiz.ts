@@ -48,4 +48,9 @@ export class Quiz {
         this.io.emit('msgNextQuestion', currentQuestion);
         this.questionList.moveToNext();
     }
+
+    public answerQuestion() {
+        let currentQuestion: IQuestion = this.questionList.getCurrent();
+        this.io.emit('msgAnswerQuestion', currentQuestion.answer);
+    }
 }

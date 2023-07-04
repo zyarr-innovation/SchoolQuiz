@@ -14,17 +14,38 @@
     align-items: center;
 }
 
-mat-card-title {
-    font-size: xx-large;
+
+
+
+@media screen and (min-width: 768px) {
+    .main-card-title {
+        font-size: xx-large;
+    }
+
+    .main-card-subtitle {
+        font-size: large;
+    }
+
+    .main-card-content {
+        width: 80%;
+    }
 }
 
-mat-card-subtitle {
-    font-size: large;
+/* Styles for small screens (screen width below 768px) */
+@media screen and (max-width: 767px) {
+    .main-card-title {
+        font-size: large;
+    }
+
+    .main-card-subtitle {
+        font-size: small;
+    }
+
+    .main-card-content {
+        width: 100%;
+    }
 }
 
-.main-card-content {
-    width: 80%;
-}
 
 .main-card-actions {
     width: 100%;
@@ -44,4 +65,17 @@ mat-card-subtitle {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+}
+
+
+@font-face {
+    font-family: 'Jameel Noori Nastaleeq';
+    src: url('../../assets/fonts/JameelNooriNastaleeqRegular.ttf') format('truetype');
+    /* Adjust the path and file extension based on your font files */
+}
+
+.urdu-text {
+    font-family: 'Jameel Noori Nastaleeq', Arial, sans-serif;
+    font-size: x-large !important;
+    /* Fallback to Arial or other sans-serif font */
 }
