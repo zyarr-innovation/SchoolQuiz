@@ -16,7 +16,7 @@ export class Quiz {
 
     private setupSocketHandlers() {
         this.io.on('connection', (socket: Socket) => {
-            console.log(`A user connected: ${socket.id}`);
+            console.log(`A user connected to Quiz: ${socket.id}`);
 
             //Server wont subscribe to this
             // socket.on('startquiz', () => {

@@ -19,14 +19,13 @@ export class App {
 
   constructor(port: number) {
     this.app = express();
-    this.staticPath = path.resolve(__dirname, '../../client/dist/client');
+    this.staticPath = path.resolve(__dirname, '../../../client/dist/client');
 
     this.port = port;
     this.server = http.createServer(this.app);
     this.io = new SocketIOServer(this.server, {
       cors: {
-        origin: '*', // Replace '*' with your specific allowed origins
-        methods: ['GET', 'POST'],
+        origin: '*' // Replace '*' with your specific allowed origins
       },
     });
     this.quiz = new Quiz(this.io);

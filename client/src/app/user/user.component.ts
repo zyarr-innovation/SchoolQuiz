@@ -31,7 +31,6 @@ export class UserComponent {
   }
 
   ngOnInit(): void {
-
     this.socket.on('msgNextQuestion', (data) => {
       this.currentMessage$ = "";
       this.actualAnswerIndex$ = -1
@@ -47,13 +46,9 @@ export class UserComponent {
     this.socket.on('error', (error) => {
       console.error('Socket error:', error);
     });
-    this.socket.on('msgAnswerQuestion', (data) => {
-      console.log(data)
-      this.actualAnswerIndex$ = +data - 1;
 
-      if (this.selectedAnswerIndex$ == this.actualAnswerIndex$) {
-        this.currentCandidate$.score++;
-      }
+    this.socket.on('msgAnswerQuestion', (data) => {
+      this.actualAnswerIndex$ = +data - 1;
 
       let answer: IAnswer = {
         questionid: this.currentQuestion$.id,
@@ -62,13 +57,17 @@ export class UserComponent {
         timespent: 0,
       }
       this.currentCandidate$.answer.push(answer);
-      this.socket.emit("msgUpdateAnswer", this.currentCandidate$)
+
+      if (this.selectedAnswerIndex$ == this.actualAnswerIndex$) {
+        this.currentCandidate$.score++;
+      }
+      console.log("msgUpdateAnswer==>", this.currentCandidate$)
+      this.socket.emit("msgUpdateAnswer", this.currentCandidate$);
+
     })
   }
 
-
   onAnswerClick(index: number) {
-    console.log('Button clicked! Index:', index);
     this.selectedAnswerIndex$ = index;
   }
 }

@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { IQuestion } from '../../../../model/model';
+import { IParticipant, IQuestion } from '../../../../model/model';
+import { QuizService } from '../shared/quiz-service';
+import { io } from 'socket.io-client'
 
 @Component({
   selector: 'app-dashboard',
@@ -7,10 +9,23 @@ import { IQuestion } from '../../../../model/model';
   styleUrls: ['./dashboard.component.css', '../shared/shared.css']
 })
 export class DashboardComponent {
-  currentQuestion: IQuestion = {
-    id: 0,
-    question: "Which is the highest peak",
-    optionList: ["Mount Everest", "Mount Abu", "Mount Isa", "Mount Musa"],
-    answer: 1
+  socket = io("http://localhost:3000/");
+  participantList$: IParticipant[] = []
+
+  constructor(private quizService: QuizService) {
+  }
+
+  ngOnInit(): void {
+    this.getParticipantList();
+    this.socket.on('msgAnswerQuestion', (data) => {
+      this.getParticipantList();
+    });
+  }
+
+  getParticipantList() {
+    this.quizService.getParticipantList().subscribe(data => {
+      console.log(data)
+      this.participantList$ = data
+    });
   }
 }

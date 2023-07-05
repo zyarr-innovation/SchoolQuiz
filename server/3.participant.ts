@@ -16,16 +16,7 @@ export class ParticipantList {
 
   private setupSocketHandlers() {
     this.io.on('connection', (socket: Socket) => {
-      console.log(`A user connected: ${socket.id}`);
-
-      //Server wont subscribe to this
-      // socket.on('addparticipant', () => {
-      //   this.addParticipant();
-      // });
-
-      // socket.on('removeparticipant', () => {
-      //   this.removeParticipant();
-      // });
+      console.log(`A user connected to Participant List: ${socket.id}`);
 
       socket.on('msgUpdateAnswer', (data) => {
         let updatedParticipant: IParticipant = data;
@@ -39,7 +30,6 @@ export class ParticipantList {
           foundParticipant = updatedParticipant;
         }
       });
-
     });
   }
 
@@ -99,7 +89,7 @@ export class ParticipantList {
   }
 
   getList(): IParticipant[] {
-    const cloneParticipantList = Object.assign({}, this.participantList);
+    const cloneParticipantList = [...this.participantList];
     cloneParticipantList.sort((a, b) => a.score - b.score);
     return cloneParticipantList;
   }

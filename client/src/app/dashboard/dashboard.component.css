@@ -1,0 +1,27 @@
+.option-container {
+    display: flex;
+    /* Optional, use this if you want the button to stretch the full width even if it contains no other elements */
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+
+.option-sub-container {
+    display: flex;
+    /* Optional, use this if you want the button to stretch the full width even if it contains no other elements */
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.class-name {
+    width: 70%;
+    border: 1px solid black;
+    border-radius: 3px;
+    margin-right: 5px;
+}
+
+.class-score {
+    width: 20%;
+    border: 1px solid black;
+    border-radius: 3px;
+}

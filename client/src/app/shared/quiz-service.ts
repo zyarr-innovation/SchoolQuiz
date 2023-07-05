@@ -32,11 +32,8 @@ export class QuizService {
         return foundParticipant;
     }
 
-    getParticipantList() {
-        let participantList = this.participantList;
-        return participantList;
-    }
 
+    //====================================| Quiz Functions
     startQuiz() {
         return this.http.get<string>("http://localhost:3000/api/startquiz");
     }
@@ -50,15 +47,9 @@ export class QuizService {
         return this.http.get<IQuestion>("http://localhost:3000/api/answerquestion");
     }
 
-    updateScore(
-        inParticipantId: number,
-        inParticipantscore: number,
-        inParticipantTimespent: number,
-    ) {
-        let foundParticipant = this.participantList[inParticipantId];
-        if (foundParticipant) {
-            foundParticipant.score = inParticipantscore;
-            foundParticipant.timespent = inParticipantTimespent;
-        }
+    //====================================| Participants Functions
+    getParticipantList() {
+        return this.http.get<IParticipant[]>("http://localhost:3000/api/getparticipantlist");
     }
+
 }

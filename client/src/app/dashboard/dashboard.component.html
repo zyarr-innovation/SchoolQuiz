@@ -11,10 +11,12 @@
                     <mat-card-title>The score of participants</mat-card-title>
                 </mat-card-header>
                 <mat-card-content>
-                    <p>participants 1</p>
-                    <p>participants 2</p>
-                    <p>participants 3</p>
-                    <p>participants 4</p>
+                    <div *ngFor="let eachParticipant of participantList$; let i = index" class="option-container">
+                        <div class="option-sub-container">
+                            <div class="class-name">{{eachParticipant.name}}</div>
+                            <div class="class-score">{{eachParticipant.score}}</div>
+                        </div>
+                    </div>
                 </mat-card-content>
             </mat-card>
         </mat-card-content>
