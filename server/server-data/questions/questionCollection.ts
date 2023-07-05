@@ -1,16 +1,12 @@
-export interface IQuestion {
-  Id: number;
-  question: string;
-  optionList: string[];
-  answer: number
-};
+import { IQuestion } from "../../../model/model";
+
 
 export class QuestionCollection {
 
   get(): IQuestion[] {
     let questionList = [
       {
-        "Id": 1,
+        "id": 1,
         "question": "سائنس ریشے دار اشیا ءکو کیا کہتے ہیں؟",
         "optionList": [
           "کنڈکٹر",
@@ -21,7 +17,7 @@ export class QuestionCollection {
         "answer": 1
       },
       {
-        "Id": 2,
+        "id": 2,
         "question": "کاربو ہائیڈریٹ کسے کہتے ہیں؟",
         "optionList": [
           "کچی",
@@ -32,7 +28,7 @@ export class QuestionCollection {
         "answer": 2
       },
       {
-        "Id": 3,
+        "id": 3,
         "question": "پروٹین کی ضرورت کیوں ہوتی ہے؟",
         "optionList": [
           "لہو بنانے کے لئے",
@@ -43,7 +39,7 @@ export class QuestionCollection {
         "answer": 4
       },
       {
-        "Id": 4,
+        "id": 4,
         "question": "لیپ ایئر کتنے سال بعد آتا ہے؟",
         "optionList": [
           "سال میں ایک بار",
@@ -54,7 +50,7 @@ export class QuestionCollection {
         "answer": 3
       },
       {
-        "Id": 5,
+        "id": 5,
         "question": "بھارت کا کتنا فیصد حصہ جنگلات سے گھرا ہوا ہے؟",
         "optionList": [
           "20%",
@@ -65,7 +61,7 @@ export class QuestionCollection {
         "answer": 3
       },
       {
-        "Id": 6,
+        "id": 6,
         "question": "کن اشیاء میں ایصال حرارت انجام پاتا ہے؟",
         "optionList": [
           "دھات",
@@ -76,7 +72,7 @@ export class QuestionCollection {
         "answer": 1
       },
       {
-        "Id": 7,
+        "id": 7,
         "question": "پیاز اور لہسن میں بدبو کس عنصر کی وجہ سے ہوتی ہے؟",
         "optionList": [
           "سلفر",
@@ -87,7 +83,7 @@ export class QuestionCollection {
         "answer": 1
       },
       {
-        "Id": 8,
+        "id": 8,
         "question": "کون سی دھات تانبے اور جست کا آمیزہ ہے؟",
         "optionList": [
           "براس",
@@ -98,7 +94,7 @@ export class QuestionCollection {
         "answer": 3
       },
       {
-        "Id": 9,
+        "id": 9,
         "question": "مکمل سورج گرہن زیادہ سے زیادہ کتنی دیر رہتا ہے؟",
         "optionList": [
           "2 دن",
@@ -109,7 +105,7 @@ export class QuestionCollection {
         "answer": 2
       },
       {
-        "Id": 10,
+        "id": 10,
         "question": "انسان کے جسم کی سب سے چھوٹی ہڈی کونسی ہے؟",
         "optionList": [
           "گردن کی ہڈی",
@@ -120,7 +116,7 @@ export class QuestionCollection {
         "answer": 3
       },
       {
-        "Id": 11,
+        "id": 11,
         "question": "خلیے کی دریافت کس سن میں ہوئی؟",
         "optionList": [
           "1665ء",
@@ -131,7 +127,7 @@ export class QuestionCollection {
         "answer": 1
       },
       {
-        "Id": 12,
+        "id": 12,
         "question": "انسانی جسم کا سب سے بڑا عضو کونسا ہے؟",
         "optionList": [
           "دماغ",
@@ -142,7 +138,7 @@ export class QuestionCollection {
         "answer": 2
       },
       {
-        "Id": 13,
+        "id": 13,
         "question": "سب سے تیز رفتار سے سفر کرنے والی شے کونسی ہے؟",
         "optionList": [
           "رفتاری پرندہ",
@@ -153,7 +149,7 @@ export class QuestionCollection {
         "answer": 4
       },
       {
-        "Id": 14,
+        "id": 14,
         "question": "اوزون غلاف کون سی شعاعوں کو جذب کرتا ہے؟",
         "optionList": [
           "یو وی",
@@ -164,7 +160,7 @@ export class QuestionCollection {
         "answer": 1
       },
       {
-        "Id": 15,
+        "id": 15,
         "question": "مائع شے تمام سمتوں میں مساوی دباؤ ڈالتی ہے یہ قانون کس کا ہے؟",
         "optionList": [
           "آرخمیڈیس کا قانون",
@@ -175,7 +171,7 @@ export class QuestionCollection {
         "answer": 3
       },
       {
-        "Id": 16,
+        "id": 16,
         "question": "سب سے پہلا مصنوعی سیارہ کس ملک نے خلا میں چھوڑا تھا؟",
         "optionList": [
           "روس",
@@ -186,7 +182,7 @@ export class QuestionCollection {
         "answer": 1
       },
       {
-        "Id": 17,
+        "id": 17,
         "question": "انسان کے جسم میں کتنی پسلیاں ہوتی ہیں؟",
         "optionList": [
           "206",
@@ -197,7 +193,7 @@ export class QuestionCollection {
         "answer": 1
       },
       {
-        "Id": 18,
+        "id": 18,
         "question": "کون سا وٹامن سب سے پہلے دریافت ہوا؟",
         "optionList": [
           "وٹامن اے",
@@ -208,7 +204,7 @@ export class QuestionCollection {
         "answer": 2
       },
       {
-        "Id": 19,
+        "id": 19,
         "question": "عالمی یوم آب کس تاریخ کو منایا جاتا ہے؟",
         "optionList": [
           "22 مارچ",
@@ -219,7 +215,7 @@ export class QuestionCollection {
         "answer": 3
       },
       {
-        "Id": 20,
+        "id": 20,
         "question": "تالاب کے پانی کا تحلیل روکنے کے لئے اس پر کون سا الکوحل چھڑکا جاتا ہے؟",
         "optionList": [
           "ایتھل الکوحل",
@@ -230,7 +226,7 @@ export class QuestionCollection {
         "answer": 1
       },
       {
-        "Id": 21,
+        "id": 21,
         "question": "پارے کا نقطہابال کتنا ہے؟",
         "optionList": [
           "0",
@@ -241,7 +237,7 @@ export class QuestionCollection {
         "answer": 3
       },
       {
-        "Id": 22,
+        "id": 22,
         "question": "خون کے کس گروپ کو آفاقی صارف کرتے ہیں؟",
         "optionList": [
           "A",
@@ -252,7 +248,7 @@ export class QuestionCollection {
         "answer": 4
       },
       {
-        "Id": 23,
+        "id": 23,
         "question": "ر طو بت کو ناپنے کا آلہ کونسا ہے؟",
         "optionList": [
           "ترازو",
@@ -263,7 +259,7 @@ export class QuestionCollection {
         "answer": 2
       },
       {
-        "Id": 24,
+        "id": 24,
         "question": "فورسٹ ریسرچ انسٹیٹیوٹ آف انڈیا کس شہر میں واقع ہے؟",
         "optionList": [
           "دہلی",
@@ -274,7 +270,7 @@ export class QuestionCollection {
         "answer": 3
       },
       {
-        "Id": 25,
+        "id": 25,
         "question": "ہرا تو تیہ سکے کہتے ہیں؟",
         "optionList": [
           "بوتل",
@@ -285,7 +281,7 @@ export class QuestionCollection {
         "answer": 3
       },
       {
-        "Id": 26,
+        "id": 26,
         "question": "مجسموں اور ہڈی کے ٹوٹنے پر کون سی چیز استعمال کرتے ہیں؟",
         "optionList": [
           "سلو",
@@ -296,7 +292,7 @@ export class QuestionCollection {
         "answer": 2
       },
       {
-        "Id": 27,
+        "id": 27,
         "question": "غذائی اشیاء کو محفوظ کرنے کے لئے کس کا استعمال کرتے ہیں؟",
         "optionList": [
           "المنیمیم فوئل",
@@ -307,7 +303,7 @@ export class QuestionCollection {
         "answer": 1
       },
       {
-        "Id": 28,
+        "id": 28,
         "question": "کاربوہائیڈریٹ کی سب سے آسان شکل کون سی ہے؟",
         "optionList": [
           "شکر",
@@ -318,7 +314,7 @@ export class QuestionCollection {
         "answer": 1
       },
       {
-        "Id": 29,
+        "id": 29,
         "question": "ہمارے نظام شمسی جس کہکشاں میں ہے، اس کا کیا نام ہے؟",
         "optionList": [
           "دھرتی",
@@ -329,7 +325,7 @@ export class QuestionCollection {
         "answer": 2
       },
       {
-        "Id": 30,
+        "id": 30,
         "question": "ایشیا کی سب سے بڑی بصری دوربین کہاں ہے؟",
         "optionList": [
           "پاکستان",
@@ -340,7 +336,7 @@ export class QuestionCollection {
         "answer": 2
       },
       {
-        "Id": 31,
+        "id": 31,
         "question": "انسانی دل کی جسامت کتنی ہوتی ہے؟",
         "optionList": [
           "ایک ٹینس",
@@ -351,7 +347,7 @@ export class QuestionCollection {
         "answer": 1
       },
       {
-        "Id": 32,
+        "id": 32,
         "question": "انسانی جسم میں کروموزوم کی کل کتنی جوڑیاں ہوتی ہیں؟",
         "optionList": [
           "1",
@@ -362,7 +358,7 @@ export class QuestionCollection {
         "answer": 4
       },
       {
-        "Id": 33,
+        "id": 33,
         "question": "جن نباتات میں سبز مایا موجود ہوتا ہے، اس گروپ کے نباتات کو کیا کہتے ہیں؟",
         "optionList": [
           "پودوں",
@@ -373,7 +369,7 @@ export class QuestionCollection {
         "answer": 2
       },
       {
-        "Id": 34,
+        "id": 34,
         "question": "جن نباتات میں سبز مایا موجود نہیں ہوتا ہے، انہیں کیا کہتے ہیں؟",
         "optionList": [
           "بے سبز پودے",
@@ -384,7 +380,7 @@ export class QuestionCollection {
         "answer": 3
       },
       {
-        "Id": 35,
+        "id": 35,
         "question": "جن نباتات کی بیجوں پر قدرتی غلاف نہیں ہوتا اور ان میں پھل بھی نہیں لگتے ہیں، انہیں کیا کہتے ہیں؟",
         "optionList": [
           "بیجراح پودے",
@@ -395,7 +391,7 @@ export class QuestionCollection {
         "answer": 4
       },
       {
-        "Id": 36,
+        "id": 36,
         "question": "جن نباتات کی بیجوں پر قدرتی غلاف موجود ہوتا ہے اور ان میں پھل بھی نہیں لگتے ہیں، انہیں کیا کہتے ہیں؟",
         "optionList": [
           "بیج دار پودے",
@@ -406,7 +402,7 @@ export class QuestionCollection {
         "answer": 1
       },
       {
-        "Id": 37,
+        "id": 37,
         "question": "حیاتی تنزل پذیر کچرے کا تجزیہ کس کی مدد سے آسانی سے ہوتا ہے؟",
         "optionList": [
           "روشنی",
@@ -417,7 +413,7 @@ export class QuestionCollection {
         "answer": 2
       },
       {
-        "Id": 38,
+        "id": 38,
         "question": "گردہ روزانہ نہ کتنا لیٹر خون چھانتا ہے؟",
         "optionList": [
           "1 لیٹر",
@@ -428,7 +424,7 @@ export class QuestionCollection {
         "answer": 3
       },
       {
-        "Id": 39,
+        "id": 39,
         "question": "انسانی دماغ کتنے خلیوں سے بنتا ہے؟",
         "optionList": [
           "100 سے زیادہ",
@@ -439,7 +435,7 @@ export class QuestionCollection {
         "answer": 3
       },
       {
-        "Id": 40,
+        "id": 40,
         "question": "پانچ لیٹر خون روزانہ گردوں سے کتنی بار چھانا جاتا ہے؟",
         "optionList": [
           "ایک بار",
@@ -450,7 +446,7 @@ export class QuestionCollection {
         "answer": 2
       },
       {
-        "Id": 41,
+        "id": 41,
         "question": "سب سے ہلکی گیس کونسی ہے؟",
         "optionList": [
           "ہائیڈروجن",
@@ -461,7 +457,7 @@ export class QuestionCollection {
         "answer": 1
       },
       {
-        "Id": 42,
+        "id": 42,
         "question": "جل تھلیے نباتات کس گروپ سے تعلق رکھتے ہیں؟",
         "optionList": [
           "پتھر پودے",
@@ -472,7 +468,7 @@ export class QuestionCollection {
         "answer": 2
       },
       {
-        "Id": 43,
+        "id": 43,
         "question": "انسان ایک منٹ میں کتنی بار سانس لیتا ہے؟",
         "optionList": [
           "تقریباً 10 بار",
@@ -483,7 +479,7 @@ export class QuestionCollection {
         "answer": 3
       },
       {
-        "Id": 44,
+        "id": 44,
         "question": "بھارت کا کتنا فیصد حصہ جنگلات سے گھرا ہوا ہے؟",
         "optionList": [
           "18%",
@@ -494,7 +490,7 @@ export class QuestionCollection {
         "answer": 2
       },
       {
-        "Id": 45,
+        "id": 45,
         "question": "وٹامن اے اور وٹامن ڈی کی کمی سے کونسا مرض ہوتا ہے؟",
         "optionList": [
           "رکن انزائم",
@@ -505,7 +501,7 @@ export class QuestionCollection {
         "answer": 3
       },
       {
-        "Id": 46,
+        "id": 46,
         "question": "گردے بناوٹ کے لحاظ سے کس شکل کے ہوتے ہیں؟",
         "optionList": [
           "مثلثی",
@@ -516,7 +512,7 @@ export class QuestionCollection {
         "answer": 4
       },
       {
-        "Id": 47,
+        "id": 47,
         "question": "گردے کے اندر والا حصہ کیا کہلاتا ہے؟",
         "optionList": [
           "کیڑا",
@@ -527,7 +523,7 @@ export class QuestionCollection {
         "answer": 2
       },
       {
-        "Id": 48,
+        "id": 48,
         "question": "الیکٹرک پنکھا کب اور کہاں ایجاد ہوا؟",
         "optionList": [
           "انگلستان میں اُنیسویں صدی میں",
@@ -538,7 +534,7 @@ export class QuestionCollection {
         "answer": 1
       },
       {
-        "Id": 49,
+        "id": 49,
         "question": "کس سیارے کے دن رات برابر ہوتے ہیں؟",
         "optionList": [
           "مشتری",
@@ -549,7 +545,7 @@ export class QuestionCollection {
         "answer": 3
       },
       {
-        "Id": 50,
+        "id": 50,
         "question": "روئی سے کاغذ تیار کرنا کس کی ایجاد تھی؟",
         "optionList": [
           "چینی",
@@ -560,7 +556,7 @@ export class QuestionCollection {
         "answer": 2
       },
       {
-        "Id": 51,
+        "id": 51,
         "question": "دماغ کے مطالعے کے علم کو کیا کہا جاتا ہے؟",
         "optionList": [
           "نیروفزیولوجی",
@@ -571,7 +567,7 @@ export class QuestionCollection {
         "answer": 1
       },
       {
-        "Id": 52,
+        "id": 52,
         "question": "آگ بجھانے کے لیے کون سی گیس استعمال کی جاتی ہے؟",
         "optionList": [
           "ہیلیم",
@@ -582,7 +578,7 @@ export class QuestionCollection {
         "answer": 2
       },
       {
-        "Id": 53,
+        "id": 53,
         "question": "سوال امونیا گیس کن دو گیسوں کے تعامل سے بنتی ہے؟",
         "optionList": [
           "نائٹروجن اور ہائیڈروجن",
@@ -593,7 +589,7 @@ export class QuestionCollection {
         "answer": 1
       },
       {
-        "Id": 54,
+        "id": 54,
         "question": "کلورین گیس ہو اسے کتنی بھاری ہوتی ہے؟",
         "optionList": [
           "ہوا سے بھاری",
@@ -604,7 +600,7 @@ export class QuestionCollection {
         "answer": 1
       },
       {
-        "Id": 55,
+        "id": 55,
         "question": "سب سے ہلکی دھات کونسی ہوتی ہے؟",
         "optionList": [
           "لوہا",
@@ -615,7 +611,7 @@ export class QuestionCollection {
         "answer": 2
       },
       {
-        "Id": 56,
+        "id": 56,
         "question": "دنیا میں سب سے زیادہ قدرتی گیس کارذخیر و کس ملک میں ہے؟",
         "optionList": [
           "روسیہ",
@@ -626,7 +622,7 @@ export class QuestionCollection {
         "answer": 1
       },
       {
-        "Id": 57,
+        "id": 57,
         "question": "نظریہ ارتقاء کا بانی کون تھا؟",
         "optionList": [
           "چارلز ڈارون",
@@ -637,7 +633,7 @@ export class QuestionCollection {
         "answer": 3
       },
       {
-        "Id": 58,
+        "id": 58,
         "question": "سب سے پہلے کو نسا جانور خلا میں گیا تھا؟",
         "optionList": [
           "میمون",
@@ -648,7 +644,7 @@ export class QuestionCollection {
         "answer": 2
       },
       {
-        "Id": 59,
+        "id": 59,
         "question": "سوال ایک عام انسان کا بلڈ پریشر عموما کنار بہتا ہے؟",
         "optionList": [
           "120/80",
@@ -659,7 +655,7 @@ export class QuestionCollection {
         "answer": 1
       },
       {
-        "Id": 60,
+        "id": 60,
         "question": "خون میں کتنے فیصد پانی ہوتا ہے؟",
         "optionList": [
           "50%",
@@ -670,7 +666,7 @@ export class QuestionCollection {
         "answer": 3
       },
       {
-        "Id": 61,
+        "id": 61,
         "question": "انسانی جسم میں کتنی ہڈیاں اور جوڑ ہوتے ہیں؟",
         "optionList": [
           "دو سو چھ ہڈیاں اور دو سو تیس جوڑ",
@@ -681,7 +677,7 @@ export class QuestionCollection {
         "answer": 1
       },
       {
-        "Id": 62,
+        "id": 62,
         "question": "انسان نے سب سے پہلے کیا کاشت کیا؟",
         "optionList": [
           "گنا",
@@ -692,7 +688,7 @@ export class QuestionCollection {
         "answer": 2
       },
       {
-        "Id": 63,
+        "id": 63,
         "question": "کتایک منٹ میں کتنی بار سانس لیتا ہے؟",
         "optionList": [
           "12 بار",
@@ -703,7 +699,7 @@ export class QuestionCollection {
         "answer": 2
       },
       {
-        "Id": 64,
+        "id": 64,
         "question": "دنیا میں سب سے پہلے کس انسان نے خلا میں سفر کیا؟",
         "optionList": [
           "نیل ارمسٹرانگ",
@@ -714,7 +710,7 @@ export class QuestionCollection {
         "answer": 2
       },
       {
-        "Id": 65,
+        "id": 65,
         "question": "کس سیارے پر سال سب سے لمبا ہوتا ہے؟",
         "optionList": [
           "مشتری",
@@ -725,7 +721,7 @@ export class QuestionCollection {
         "answer": 1
       },
       {
-        "Id": 66,
+        "id": 66,
         "question": "مکڑی کی کتنی آنکھیں ہوتی ہیں؟",
         "optionList": [
           "4 آنکھیں",
@@ -736,7 +732,7 @@ export class QuestionCollection {
         "answer": 3
       },
       {
-        "Id": 67,
+        "id": 67,
         "question": "پہلے خلاباز کا نام کیا ہے؟",
         "optionList": [
           "نیل ارمسٹرانگ",
@@ -747,7 +743,7 @@ export class QuestionCollection {
         "answer": 1
       },
       {
-        "Id": 68,
+        "id": 68,
         "question": "لیکلو میٹر سے کیا کام لیا جاتا ہے؟",
         "optionList": [
           "وقت کی پیمائش",
@@ -758,7 +754,7 @@ export class QuestionCollection {
         "answer": 2
       },
       {
-        "Id": 69,
+        "id": 69,
         "question": "واٹ کس کی اکائی ہے؟",
         "optionList": [
           "کام کی اکائی",
@@ -769,7 +765,7 @@ export class QuestionCollection {
         "answer": 2
       },
       {
-        "Id": 70,
+        "id": 70,
         "question": "سب سے پہلے کس مسلمان سائنسدان نے دبے انسائیکلو پیڈیا مرتب کیا تھا؟",
         "optionList": [
           "ابن سینا",
@@ -780,7 +776,7 @@ export class QuestionCollection {
         "answer": 4
       },
       {
-        "Id": 71,
+        "id": 71,
         "question": "ریشم کا کیڑا عمر بھر میں کتنے گزریشم بنتا ہے؟",
         "optionList": [
           "1 بار",
@@ -791,7 +787,7 @@ export class QuestionCollection {
         "answer": 3
       },
       {
-        "Id": 72,
+        "id": 72,
         "question": "ریشم کے کیڑے کی خاص اور مرغوب غذا کیا ہے؟",
         "optionList": [
           "لیف",
@@ -802,7 +798,7 @@ export class QuestionCollection {
         "answer": 1
       },
       {
-        "Id": 73,
+        "id": 73,
         "question": "سب سے زیادہ تیز رفتاری سے سفر کرنے والی شے کونسی ہے؟",
         "optionList": [
           "بجلی",
@@ -813,7 +809,7 @@ export class QuestionCollection {
         "answer": 3
       },
       {
-        "Id": 74,
+        "id": 74,
         "question": "عمل تنفس کے ذریعے کون سی گیس انسان خارج کرتا ہے؟",
         "optionList": [
           "کاربن ڈائی اکسائیڈ",
@@ -824,7 +820,7 @@ export class QuestionCollection {
         "answer": 1
       },
       {
-        "Id": 75,
+        "id": 75,
         "question": "زمین سے قریب ترین فلکی کرہ کونسا ہے؟",
         "optionList": [
           "مریخ",
@@ -835,7 +831,7 @@ export class QuestionCollection {
         "answer": 4
       },
       {
-        "Id": 76,
+        "id": 76,
         "question": "سب سے ملکی گیس کونسی ہے؟",
         "optionList": [
           "ہائیڈروجن",
@@ -846,7 +842,7 @@ export class QuestionCollection {
         "answer": 1
       },
       {
-        "Id": 77,
+        "id": 77,
         "question": "بجلی کے جھٹکے سے آدمی اگر چپک جائے تو کونسی چیز سے الگ کیا جا سکتا ہے؟",
         "optionList": [
           "پلاسٹک",
@@ -857,7 +853,7 @@ export class QuestionCollection {
         "answer": 3
       },
       {
-        "Id": 78,
+        "id": 78,
         "question": "جسم کا توازن کون برقرار رکھتا ہے؟",
         "optionList": [
           "کمر",
@@ -868,7 +864,7 @@ export class QuestionCollection {
         "answer": 1
       },
       {
-        "Id": 79,
+        "id": 79,
         "question": "مکمل سورج گرہن زیادہ سے زیادہ کتنی دیر دیتا ہے؟",
         "optionList": [
           "۲۴ گھنٹے",
@@ -879,7 +875,7 @@ export class QuestionCollection {
         "answer": 2
       },
       {
-        "Id": 80,
+        "id": 80,
         "question": "تمبا کو میں کون ساز ہر یلا مادہ ہوتا ہے؟",
         "optionList": [
           "سیلوفین",
@@ -890,7 +886,7 @@ export class QuestionCollection {
         "answer": 3
       },
       {
-        "Id": 81,
+        "id": 81,
         "question": "روشنی ایک سیکنڈ میں تقریباً کتنا فاصلہ طے کرتی ہے؟",
         "optionList": [
           "۳۰,۰۰۰ کلومیٹر",
@@ -901,7 +897,7 @@ export class QuestionCollection {
         "answer": 1
       },
       {
-        "Id": 82,
+        "id": 82,
         "question": "وہ کونسا ہوٹامن ہے جس کی کمی سے رات کا اندھاپن ہوتا ہے؟",
         "optionList": [
           "ملیبڈینیم",
@@ -912,7 +908,7 @@ export class QuestionCollection {
         "answer": 2
       },
       {
-        "Id": 83,
+        "id": 83,
         "question": "انسان کے سر میں کتنی ہڈیاں ہوتی ہیں؟",
         "optionList": [
           "۳۰",
@@ -923,7 +919,7 @@ export class QuestionCollection {
         "answer": 2
       },
       {
-        "Id": 84,
+        "id": 84,
         "question": "انسان کے جسم میں سب سے بڑی ہڈی کونسی ہے؟",
         "optionList": [
           "ریڑھ کی ہڈی",
@@ -934,7 +930,7 @@ export class QuestionCollection {
         "answer": 1
       },
       {
-        "Id": 85,
+        "id": 85,
         "question": "خون کی کمی سے انسان کو کون سا مرض لاحق ہو جاتا ہے؟",
         "optionList": [
           "دماغی روگ",
@@ -945,7 +941,7 @@ export class QuestionCollection {
         "answer": 4
       },
       {
-        "Id": 86,
+        "id": 86,
         "question": "کونسا تینوں ٹاپوں کا سب سے پہلے دریافت ہوا؟",
         "optionList": [
           "مری کوری",
@@ -956,7 +952,7 @@ export class QuestionCollection {
         "answer": 1
       },
       {
-        "Id": 87,
+        "id": 87,
         "question": "وہ جھیل کس ملک میں ہے جس کی سطح کا پانی شربت کی طرح میٹھا ہے مگر سطح کے تین فٹ نیچے کا پانی کڑوا ہے؟",
         "optionList": [
           "تھائی لینڈ",
@@ -967,7 +963,7 @@ export class QuestionCollection {
         "answer": 2
       },
       {
-        "Id": 88,
+        "id": 88,
         "question": "وہ کون سا ملک ہے جہاں چڑیا نہیں پائی جاتی ہے؟",
         "optionList": [
           "یمن",
@@ -978,7 +974,7 @@ export class QuestionCollection {
         "answer": 1
       },
       {
-        "Id": 89,
+        "id": 89,
         "question": "انسان کے بعد دنیا کیذہین ترین مخلوق کونسی ہے؟",
         "optionList": [
           "گوریلا",
@@ -989,7 +985,7 @@ export class QuestionCollection {
         "answer": 2
       },
       {
-        "Id": 90,
+        "id": 90,
         "question": "دنیا کے سب سے چھوٹے پرندے کا نام بتائیں؟",
         "optionList": [
           "کوہرا",
@@ -1000,7 +996,7 @@ export class QuestionCollection {
         "answer": 3
       },
       {
-        "Id": 91,
+        "id": 91,
         "question": "شہد کی مکھی کی کتنی آنکھیں ہوتی ہیں؟",
         "optionList": [
           "۱",

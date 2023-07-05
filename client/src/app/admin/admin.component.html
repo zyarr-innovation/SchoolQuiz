@@ -22,7 +22,7 @@
                         <div *ngFor="let eachOption of currentQuestion$.optionList; let i = index"
                             class="option-container">
                             <button class="option urdu-text"
-                                [ngClass]="{'highlighted-button': i === highlightedAnswerIndex$}">{{eachOption}}</button>
+                                [ngClass]="{'actualAnswer-button': i === actualAnswerIndex$}">{{eachOption}}</button>
                         </div>
                     </mat-card-content>
                 </mat-card>

@@ -11,7 +11,7 @@
     font-size: x-large;
 }
 
-.highlighted-button {
+.actualAnswer-button {
     /* Add styles to highlight the button */
     background-color: yellow;
     color: black;

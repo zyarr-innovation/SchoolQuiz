@@ -1,7 +1,7 @@
 import { Socket } from 'socket.io';
 import { Server as SocketIOServer } from 'socket.io';
 import { QuestionList } from './server-data/questions/question-list';
-import { IQuestion } from './server-data/questions/questionCollection';
+import { IParticipant, IQuestion } from '../model/model';
 
 export class Quiz {
     private io: SocketIOServer;
@@ -30,6 +30,7 @@ export class Quiz {
             // socket.on('nextquestion', () => {
             //     this.nextQuestion();
             // });
+
         });
     }
 

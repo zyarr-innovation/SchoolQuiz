@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IQuestion } from '../shared/models';
+import { IQuestion } from '../../../../model/model';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,6 +8,7 @@ import { IQuestion } from '../shared/models';
 })
 export class DashboardComponent {
   currentQuestion: IQuestion = {
+    id: 0,
     question: "Which is the highest peak",
     optionList: ["Mount Everest", "Mount Abu", "Mount Isa", "Mount Musa"],
     answer: 1

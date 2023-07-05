@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IQuestion } from '../shared/models';
+import { IQuestion } from '../../../../model/model';
 import { io } from 'socket.io-client';
 import { QuizService } from '../shared/quiz-service';
 
@@ -10,10 +10,11 @@ import { QuizService } from '../shared/quiz-service';
 })
 export class AdminComponent {
   socket = io("http://localhost:3000/");
-  highlightedAnswerIndex$ = -1;
+  actualAnswerIndex$ = -1;
 
   currentMessage$: string = "Welcome to Zyarr Quiz";
   currentQuestion$: IQuestion = {
+    id: 0,
     question: "Which is the highest peak",
     optionList: ["Mount Everest", "Mount Abu", "Mount Isa", "Mount Musa"],
     answer: 1
@@ -26,7 +27,7 @@ export class AdminComponent {
 
     this.socket.on('msgNextQuestion', (data) => {
       this.currentMessage$ = "";
-      this.highlightedAnswerIndex$ = -1
+      this.actualAnswerIndex$ = -1
       this.currentQuestion$ = data;
     })
     this.socket.on('msgStartQuiz', (data) => {
@@ -40,7 +41,7 @@ export class AdminComponent {
     });
     this.socket.on('msgAnswerQuestion', (data) => {
       console.log(data)
-      this.highlightedAnswerIndex$ = +data - 1;
+      this.actualAnswerIndex$ = +data - 1;
     })
   }
 
@@ -54,7 +55,7 @@ export class AdminComponent {
   }
 
   nextQuiz() {
-    this.highlightedAnswerIndex$ = -1;
+    this.actualAnswerIndex$ = -1;
     this.quizService.nextQuestion().subscribe(console.log)
   }
 

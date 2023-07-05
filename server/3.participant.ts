@@ -1,14 +1,8 @@
 import { Socket } from 'socket.io';
 import { Server as SocketIOServer } from 'socket.io';
 import { json } from 'stream/consumers';
+import { IParticipant } from '../model/model';
 
-export interface IParticipant {
-  id: number;
-  name: string;
-  email: string;
-  score: number;
-  timespent: number;
-};
 
 export class ParticipantList {
   private io: SocketIOServer;
@@ -32,6 +26,19 @@ export class ParticipantList {
       // socket.on('removeparticipant', () => {
       //   this.removeParticipant();
       // });
+
+      socket.on('msgUpdateAnswer', (data) => {
+        let updatedParticipant: IParticipant = data;
+        let foundParticipant = this.participantList.find(
+          eachParticipant => eachParticipant.name == updatedParticipant.name
+        );
+
+        if (!foundParticipant) {
+          this.participantList.push(updatedParticipant);
+        } else {
+          foundParticipant = updatedParticipant;
+        }
+      });
 
     });
   }

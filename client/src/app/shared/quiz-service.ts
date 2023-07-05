@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { EMPTY, from, of } from "rxjs";
-import { IParticipant, IQuestion } from "./models";
+import { IParticipant, IQuestion } from "../../../../model/model";
 
 @Injectable({
     providedIn: 'root',
@@ -12,6 +12,7 @@ export class QuizService {
 
     constructor(private http: HttpClient) {
         this.questionCurrent = {
+            id: 0,
             question: "Which is the Best Quiz App",
             optionList: ["Zyarr Quiz", "Zyarr Quiz", "Zyarr Quiz", "Zyarr Quiz"],
             answer: 1
@@ -20,9 +21,12 @@ export class QuizService {
 
     registerParticipant(inParticipantName: string, inParticipantEmail: string) {
         let participant: IParticipant = {
-            id: this.participantList.length,
+            id: this.participantList.length + 1,
             name: inParticipantName,
-            email: inParticipantEmail
+            email: inParticipantEmail,
+            score: 0,
+            timespent: 0,
+            answer: []
         }
         let foundParticipant = this.participantList.push(participant);
         return foundParticipant;

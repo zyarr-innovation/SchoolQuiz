@@ -11,9 +11,23 @@
     font-size: x-large;
 }
 
-.highlighted-button {
+.actualAnswer-button {
     /* Add styles to highlight the button */
     background-color: yellow;
+    color: black;
+    /* Add other styles as needed */
+}
+
+.selectedAnswer-button {
+    /* Add styles to highlight the button */
+    background-color: green;
+    color: black;
+    /* Add other styles as needed */
+}
+
+.sameAnswer-button {
+    /* Add styles to highlight the button */
+    background-color: blueviolet;
     color: black;
     /* Add other styles as needed */
 }

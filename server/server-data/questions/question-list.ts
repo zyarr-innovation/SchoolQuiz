@@ -1,4 +1,5 @@
-import { IQuestion, QuestionCollection } from './questionCollection';
+import { IQuestion } from '../../../model/model';
+import { QuestionCollection } from './questionCollection';
 
 export class QuestionList {
   private questionCollection: QuestionCollection;

@@ -2,7 +2,8 @@
     <mat-card class="main-card">
         <mat-card-header class="main-card-header">
             <mat-card-title class="main-card-title">Zyarr Quiz</mat-card-title>
-            <mat-card-subtitle class="main-card-subtitle">Admin Control</mat-card-subtitle>
+            <mat-card-subtitle class="main-card-subtitle">Score
+                {{currentCandidate$.score}}/{{currentCandidate$.answer.length}}</mat-card-subtitle>
         </mat-card-header>
         <mat-card-content class="main-card-content">
             <mat-divider></mat-divider>
@@ -21,8 +22,11 @@
                     <mat-card-content class="sub-card-content">
                         <div *ngFor="let eachOption of currentQuestion$.optionList; let i = index"
                             class="option-container">
-                            <button class="option urdu-text"
-                                [ngClass]="{'highlighted-button': i === highlightedAnswerIndex$}">{{eachOption}}</button>
+                            <button class="option urdu-text" [ngClass]="{
+                                'actualAnswer-button': i === actualAnswerIndex$,
+                                'selectedAnswer-button': i === selectedAnswerIndex$,
+                                'sameAnswer-button': i === actualAnswerIndex$ && i === selectedAnswerIndex$}"
+                                (click)="onAnswerClick(i)">{{eachOption}}</button>
                         </div>
                     </mat-card-content>
                 </mat-card>
