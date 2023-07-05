@@ -2,6 +2,7 @@ import { Socket } from 'socket.io';
 import { Server as SocketIOServer } from 'socket.io';
 import { json } from 'stream/consumers';
 import { IParticipant } from '../model/model';
+import { MessageConstant } from '../model/msg-const';
 
 
 export class ParticipantList {
@@ -18,7 +19,7 @@ export class ParticipantList {
     this.io.on('connection', (socket: Socket) => {
       console.log(`A user connected to Participant List: ${socket.id}`);
 
-      socket.on('msgUpdateAnswer', (data) => {
+      socket.on(MessageConstant.msgUpdateAnswer, (data) => {
         let updatedParticipant: IParticipant = data;
         let foundParticipant = this.participantList.find(
           eachParticipant => eachParticipant.name == updatedParticipant.name

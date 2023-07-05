@@ -7,6 +7,7 @@ import { setupQuizRoutes } from './2.quiz-routes';
 import mime from 'mime';
 import { ParticipantList } from './3.participant';
 import { setupParticipantRoutes } from './2.participant-routes';
+import { MessageConstant } from '../model/msg-const';
 
 export class App {
   private app: express.Application;
@@ -37,7 +38,7 @@ export class App {
   private setupContentSecurity() {
     const cspConfig = {
       'default-src': ["'self'"],
-      'script-src': ["'self'", "'unsafe-inline'", "'unsafe-eval'", "http://localhost:3000"], // Add 'http://localhost:3000' for Socket.IO
+      'script-src': ["'self'", "'unsafe-inline'", "'unsafe-eval'", MessageConstant.baseUrl], // Add 'http://localhost:3000' for Socket.IO
       'style-src': ["'self'", "'unsafe-inline'"],
       'img-src': ["'self'", "data:"],
       'font-src': ["'self'"],
@@ -82,15 +83,15 @@ export class App {
     // Serve static files, same as before
 
     const quizRoutes = setupQuizRoutes(this.quiz);
-    this.app.get('/api/startquiz', quizRoutes.startQuiz);
-    this.app.get('/api/stopquiz', quizRoutes.stopQuiz);
-    this.app.get('/api/nextquestion', quizRoutes.nextQuestion);
-    this.app.get('/api/answerquestion', quizRoutes.answerQuestion);
+    this.app.get(MessageConstant.apiStartQuiz, quizRoutes.startQuiz);
+    this.app.get(MessageConstant.apiStopQuiz, quizRoutes.stopQuiz);
+    this.app.get(MessageConstant.apiNextQuestion, quizRoutes.nextQuestion);
+    this.app.get(MessageConstant.apiAnswerQuestion, quizRoutes.answerQuestion);
 
     const participantRoutes = setupParticipantRoutes(this.participantList);
-    this.app.get('/api/addparticipant', participantRoutes.addParticipant);
-    this.app.get('/api/removeparticipant', participantRoutes.removeParticipant);
-    this.app.get('/api/getparticipantlist', participantRoutes.getParticipantList);
+    this.app.get(MessageConstant.apiAddParticipant, participantRoutes.addParticipant);
+    this.app.get(MessageConstant.apiRemoveParticipant, participantRoutes.removeParticipant);
+    this.app.get(MessageConstant.apiGetParticipantList, participantRoutes.getParticipantList);
 
     this.app.get('*', (req: Request, res: Response) => {
       res.sendFile(path.join(this.staticPath, 'index.html'));

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IAnswer, IParticipant, IQuestion } from '../../../../model/model';
+import { MessageConstant } from '../../../../model/msg-const';
 import { io } from 'socket.io-client';
 
 
@@ -9,7 +10,7 @@ import { io } from 'socket.io-client';
   styleUrls: ['./user.component.css', '../shared/shared.css']
 })
 export class UserComponent {
-  socket = io("http://localhost:3000/");
+  socket = io(MessageConstant.baseUrl);
   actualAnswerIndex$ = -1;
   selectedAnswerIndex$ = -1;
 
@@ -31,23 +32,23 @@ export class UserComponent {
   }
 
   ngOnInit(): void {
-    this.socket.on('msgNextQuestion', (data) => {
+    this.socket.on(MessageConstant.msgNextQuestion, (data) => {
       this.currentMessage$ = "";
       this.actualAnswerIndex$ = -1
       this.selectedAnswerIndex$ = -1;
       this.currentQuestion$ = data;
     })
-    this.socket.on('msgStartQuiz', (data) => {
+    this.socket.on(MessageConstant.msgStartQuiz, (data) => {
       this.currentMessage$ = data;
     })
-    this.socket.on('msgStopQuiz', (data) => {
+    this.socket.on(MessageConstant.msgStopQuiz, (data) => {
       this.currentMessage$ = data;
     })
-    this.socket.on('error', (error) => {
+    this.socket.on(MessageConstant.msgError, (error) => {
       console.error('Socket error:', error);
     });
 
-    this.socket.on('msgAnswerQuestion', (data) => {
+    this.socket.on(MessageConstant.msgAnswerQuestion, (data) => {
       this.actualAnswerIndex$ = +data - 1;
 
       let answer: IAnswer = {
@@ -61,8 +62,7 @@ export class UserComponent {
       if (this.selectedAnswerIndex$ == this.actualAnswerIndex$) {
         this.currentCandidate$.score++;
       }
-      console.log("msgUpdateAnswer==>", this.currentCandidate$)
-      this.socket.emit("msgUpdateAnswer", this.currentCandidate$);
+      this.socket.emit(MessageConstant.msgUpdateAnswer, this.currentCandidate$);
 
     })
   }

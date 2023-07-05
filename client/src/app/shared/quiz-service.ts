@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { EMPTY, from, of } from "rxjs";
+import { MessageConstant } from "../../../../model/msg-const";
 import { IParticipant, IQuestion } from "../../../../model/model";
 
 @Injectable({
@@ -13,8 +14,8 @@ export class QuizService {
     constructor(private http: HttpClient) {
         this.questionCurrent = {
             id: 0,
-            question: "Which is the Best Quiz App",
-            optionList: ["Zyarr Quiz", "Zyarr Quiz", "Zyarr Quiz", "Zyarr Quiz"],
+            question: 'Which is the Best Quiz App',
+            optionList: ['Zyarr Quiz', 'Zyarr Quiz', 'Zyarr Quiz', 'Zyarr Quiz'],
             answer: 1
         };
     }
@@ -35,21 +36,21 @@ export class QuizService {
 
     //====================================| Quiz Functions
     startQuiz() {
-        return this.http.get<string>("http://localhost:3000/api/startquiz");
+        return this.http.get<string>(`${MessageConstant.baseUrl}${MessageConstant.apiStartQuiz}`);
     }
     stopQuiz() {
-        return this.http.get<string>("http://localhost:3000/api/stopquiz");
+        return this.http.get<string>(`${MessageConstant.baseUrl}${MessageConstant.apiStopQuiz}`);
     }
     nextQuestion() {
-        return this.http.get<IQuestion>("http://localhost:3000/api/nextquestion");
+        return this.http.get<IQuestion>(`${MessageConstant.baseUrl}${MessageConstant.apiNextQuestion}`);
     }
     anwerQuestion() {
-        return this.http.get<IQuestion>("http://localhost:3000/api/answerquestion");
+        return this.http.get<IQuestion>(`${MessageConstant.baseUrl}${MessageConstant.apiAnswerQuestion}`);
     }
 
     //====================================| Participants Functions
     getParticipantList() {
-        return this.http.get<IParticipant[]>("http://localhost:3000/api/getparticipantlist");
+        return this.http.get<IParticipant[]>(`${MessageConstant.baseUrl}${MessageConstant.apiGetParticipantList}`);
     }
 
 }

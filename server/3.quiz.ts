@@ -2,6 +2,7 @@ import { Socket } from 'socket.io';
 import { Server as SocketIOServer } from 'socket.io';
 import { QuestionList } from './server-data/questions/question-list';
 import { IParticipant, IQuestion } from '../model/model';
+import { MessageConstant } from '../model/msg-const';
 
 export class Quiz {
     private io: SocketIOServer;
@@ -36,22 +37,22 @@ export class Quiz {
 
     public startQuiz() {
         this.quizRunning = true;
-        this.io.emit('msgStartQuiz', 'Quiz has started!');
+        this.io.emit(MessageConstant.msgStartQuiz, 'Quiz has started!');
     }
 
     public stopQuiz() {
         this.quizRunning = false;
-        this.io.emit('msgStopQuiz', 'Quiz has stopped!');
+        this.io.emit(MessageConstant.msgStopQuiz, 'Quiz has stopped!');
     }
 
     public nextQuestion() {
         let currentQuestion: IQuestion = this.questionList.getCurrent();
-        this.io.emit('msgNextQuestion', currentQuestion);
+        this.io.emit(MessageConstant.msgNextQuestion, currentQuestion);
         this.questionList.moveToNext();
     }
 
     public answerQuestion() {
         let currentQuestion: IQuestion = this.questionList.getCurrent();
-        this.io.emit('msgAnswerQuestion', currentQuestion.answer);
+        this.io.emit(MessageConstant.msgAnswerQuestion, currentQuestion.answer);
     }
 }

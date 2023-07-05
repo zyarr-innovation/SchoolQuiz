@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IParticipant, IQuestion } from '../../../../model/model';
 import { QuizService } from '../shared/quiz-service';
 import { io } from 'socket.io-client'
+import { MessageConstant } from '../../../../model/msg-const';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,7 +10,7 @@ import { io } from 'socket.io-client'
   styleUrls: ['./dashboard.component.css', '../shared/shared.css']
 })
 export class DashboardComponent {
-  socket = io("http://localhost:3000/");
+  socket = io(MessageConstant.baseUrl);
   participantList$: IParticipant[] = []
 
   constructor(private quizService: QuizService) {
@@ -17,7 +18,7 @@ export class DashboardComponent {
 
   ngOnInit(): void {
     this.getParticipantList();
-    this.socket.on('msgAnswerQuestion', (data) => {
+    this.socket.on(MessageConstant.msgAnswerQuestion, (data) => {
       this.getParticipantList();
     });
   }
