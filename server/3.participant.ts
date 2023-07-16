@@ -59,18 +59,21 @@ export class ParticipantList {
     );
 
     if (!foundParticipant) {
-      inParticipant.id = this.participantList[this.participantList.length].id + 1;
+      inParticipant.id = 0 < this.participantList.length ?
+        this.participantList[this.participantList.length].id + 1 : 1;
+
       inParticipant.score = 0;
       inParticipant.timespent = 0;
       this.participantList.push(inParticipant);
       retValue = inParticipant;
+
+      this.io.emit('addparticpant', retValue);
     } else {
       foundParticipant.score = 0;
       foundParticipant.timespent = 0;
       retValue = foundParticipant;
     }
 
-    this.io.emit('addparticpant', retValue);
     return retValue;
   }
 

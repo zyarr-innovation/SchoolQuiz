@@ -74,6 +74,7 @@ export class App {
 
   private setupMiddleware() {
     // Middleware setup, same as before
+    this.app.use(express.json());
     this.setupStaticFileHeader();
     this.setupContentSecurity();
     this.setupRoutes();
