@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-import { EMPTY, from, of } from "rxjs";
+import { EMPTY, catchError, from, of, throwError } from "rxjs";
 import { MessageConstant } from "../../../../model/msg-const";
 import { IParticipant, IQuestion } from "../../../../model/model";
 
@@ -20,20 +20,6 @@ export class QuizService {
         };
     }
 
-    registerParticipant(inParticipantName: string, inParticipantEmail: string) {
-        let participant: IParticipant = {
-            id: this.participantList.length + 1,
-            name: inParticipantName,
-            email: inParticipantEmail,
-            score: 0,
-            timespent: 0,
-            answer: []
-        }
-        let foundParticipant = this.participantList.push(participant);
-        return foundParticipant;
-    }
-
-
     //====================================| Quiz Functions
     startQuiz() {
         return this.http.get<string>(`${MessageConstant.baseUrl}${MessageConstant.apiStartQuiz}`);
@@ -51,6 +37,34 @@ export class QuizService {
     //====================================| Participants Functions
     getParticipantList() {
         return this.http.get<IParticipant[]>(`${MessageConstant.baseUrl}${MessageConstant.apiGetParticipantList}`);
+    }
+
+    registerParticipant(inPartipantName: string, inParticipantPassword: string) {
+        let inParticipant: IParticipant = {
+            id: 0,
+            name: inPartipantName,
+            email: `${inPartipantName}@zyarr.com`,
+            score: 0,
+            timespent: 0,
+            answer: []
+        }
+        this.http.post<IParticipant>(
+            `${MessageConstant.baseUrl}${MessageConstant.apiAddParticipant}`,
+            inParticipant
+        ).pipe(
+            catchError(error => {
+                console.log('An error occurred:', error);
+                // Handle the error as per your requirements
+                return throwError('Something went wrong. Please try again later.');
+            })
+        ).subscribe(
+            outParticipant => {
+                console.log(outParticipant);
+                this.participantList.push(outParticipant)
+                return true;
+            }
+        );
+
     }
 
 }

@@ -24,12 +24,34 @@ export class QuestionList {
     return ([...nums]);
   }
 
+  getRandomOrder(): number[] {
+    const numbers: number[] = [0, 1, 2, 3];
+    const randomOrder: number[] = [];
+
+    while (numbers.length > 0) {
+      const randomIndex = Math.floor(Math.random() * numbers.length);
+      const randomNumber = numbers.splice(randomIndex, 1)[0];
+      randomOrder.push(randomNumber);
+    }
+
+    return randomOrder;
+  }
+
   randomizeOptions(currentQuestion: IQuestion): IQuestion {
-    let swapIndex = Math.floor(Math.random() * 4); //number between 0 to 3
-    let initial = currentQuestion.optionList[swapIndex];
-    currentQuestion.optionList[swapIndex] = currentQuestion.optionList[0];
-    currentQuestion.optionList[0] = initial;
-    currentQuestion.answer = swapIndex + 1;
+    let orderIndexArray = this.getRandomOrder();
+
+    let optionList: string[] = []
+    for (let i = 0; i < orderIndexArray.length; ++i) {
+      optionList.push(currentQuestion.optionList[orderIndexArray[i]]);
+    }
+    currentQuestion.optionList = optionList;
+
+    for (let i = 0; i < orderIndexArray.length; ++i) {
+      if (currentQuestion.answer == (orderIndexArray[i] + 1)) {
+        currentQuestion.answer = i + 1;
+        break;
+      }
+    }
 
     return currentQuestion;
   }

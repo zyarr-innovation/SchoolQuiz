@@ -89,7 +89,7 @@ export class App {
     this.app.get(MessageConstant.apiAnswerQuestion, quizRoutes.answerQuestion);
 
     const participantRoutes = setupParticipantRoutes(this.participantList);
-    this.app.get(MessageConstant.apiAddParticipant, participantRoutes.addParticipant);
+    this.app.post(MessageConstant.apiAddParticipant, participantRoutes.addParticipant);
     this.app.get(MessageConstant.apiRemoveParticipant, participantRoutes.removeParticipant);
     this.app.get(MessageConstant.apiGetParticipantList, participantRoutes.getParticipantList);
 
