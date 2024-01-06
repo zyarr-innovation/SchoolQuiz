@@ -1,6 +1,7 @@
 import { IQuestion } from '../../../model/model';
 import { QuestionCollection } from './questionCollection';
 
+var g_RequestedNumberOfQuestions = 5
 export class QuestionList {
   private questionCollection: QuestionCollection;
   private questionCompleteList: IQuestion[];
@@ -11,14 +12,21 @@ export class QuestionList {
     this.questionCollection = new QuestionCollection();
     this.questionCompleteList = this.questionCollection.get();
 
+    if (this.questionCompleteList.length < g_RequestedNumberOfQuestions) {
+      g_RequestedNumberOfQuestions = this.questionCompleteList.length
+    }
+
     let randomIndex = this.getRandomIndex(this.questionCompleteList.length);
-    this.questionList = randomIndex.map(eachIndex => this.questionCompleteList[eachIndex])
+    this.questionList = randomIndex.map(eachIndex => {
+      --this.questionCompleteList[eachIndex - 1].answer
+      return this.questionCompleteList[eachIndex - 1]
+    })
     this.questionList.forEach(eachQuestion => this.randomizeOptions(eachQuestion));
   }
 
   getRandomIndex(maxIndex: number): number[] {
     const nums = new Set<number>();
-    while (nums.size !== 20) {
+    while (nums.size !== g_RequestedNumberOfQuestions) {
       nums.add(Math.floor(Math.random() * maxIndex) + 1);
     }
     return ([...nums]);
@@ -38,20 +46,22 @@ export class QuestionList {
   }
 
   randomizeOptions(currentQuestion: IQuestion): IQuestion {
-    let orderIndexArray = this.getRandomOrder();
+    //console.log("Original Ans (%d): %s", currentQuestion.answer, currentQuestion.optionList[currentQuestion.answer])
+    let lastQuestion = currentQuestion.optionList[currentQuestion.answer]
 
+    let orderIndexArray = this.getRandomOrder();
     let optionList: string[] = []
     for (let i = 0; i < orderIndexArray.length; ++i) {
-      optionList.push(currentQuestion.optionList[orderIndexArray[i]]);
+      let recentQuestion: string = currentQuestion.optionList[orderIndexArray[i]]
+      optionList.push(recentQuestion);
+
+      if (lastQuestion === recentQuestion) {
+        currentQuestion.answer = i
+      }
     }
     currentQuestion.optionList = optionList;
 
-    for (let i = 0; i < orderIndexArray.length; ++i) {
-      if (currentQuestion.answer == (orderIndexArray[i] + 1)) {
-        currentQuestion.answer = i + 1;
-        break;
-      }
-    }
+    //console.log("New Ans (%d): %s", currentQuestion.answer, currentQuestion.optionList[currentQuestion.answer])
 
     return currentQuestion;
   }
@@ -64,9 +74,11 @@ export class QuestionList {
     let currentQuestion: IQuestion = this.questionList[this.currentQuestionIndex];
     return currentQuestion;
   }
+
   getAnswer(): number {
     return this.questionList[this.currentQuestionIndex].answer;
   }
+
   moveToNext(): boolean {
     let isComplete = false;
     ++this.currentQuestionIndex;
@@ -76,7 +88,7 @@ export class QuestionList {
       isComplete = true;
     } else {
       let currentQuestion: IQuestion = this.questionList[this.currentQuestionIndex];
-      this.randomizeOptions(currentQuestion);
+      this.questionList[this.currentQuestionIndex] = this.randomizeOptions(currentQuestion);
     }
 
     return isComplete;

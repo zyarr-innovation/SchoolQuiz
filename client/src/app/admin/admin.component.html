@@ -30,10 +30,14 @@
             <mat-divider></mat-divider>
         </mat-card-content>
         <mat-card-actions class="main-card-actions">
-            <button mat-raised-button color="primary" (click)="startQuiz()">Start</button>
-            <button mat-raised-button color="primary" (click)="nextQuiz()">Next</button>
-            <button mat-raised-button color="primary" (click)="answerQuiz()">Answer</button>
-            <button mat-raised-button color="primary" (click)="stopQuiz()">End</button>
+            <button mat-raised-button color="primary" [disabled]="appNextState != enumstartStop.START"
+                (click)="startQuiz()">Start</button>
+            <button mat-raised-button color="primary" [disabled]="questNextState != enumNextAns.NEXT"
+                (click)="nextQuiz()">Next</button>
+            <button mat-raised-button color="primary" [disabled]="questNextState != enumNextAns.ANSWER"
+                (click)="answerQuiz()">Answer</button>
+            <button mat-raised-button color="primary" [disabled]="appNextState != enumstartStop.STOP"
+                (click)="stopQuiz()">End</button>
         </mat-card-actions>
     </mat-card>
 </div>

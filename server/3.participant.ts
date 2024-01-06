@@ -56,7 +56,9 @@ export class ParticipantList {
     let retValue;
 
     if (inParticipant.name == 'admin') {
+      this.participantList = [];
       retValue = inParticipant;
+      return retValue;
     }
 
     let foundParticipant = this.participantList.find(

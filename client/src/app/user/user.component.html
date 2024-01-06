@@ -26,7 +26,7 @@
                                 'actualAnswer-button': i === actualAnswerIndex$,
                                 'selectedAnswer-button': i === selectedAnswerIndex$,
                                 'sameAnswer-button': i === actualAnswerIndex$ && i === selectedAnswerIndex$}"
-                                (click)="onAnswerClick(i)">{{eachOption}}</button>
+                                [disabled]="!enableControl" (click)="onAnswerClick(i)">{{eachOption}}</button>
                         </div>
                     </mat-card-content>
                 </mat-card>

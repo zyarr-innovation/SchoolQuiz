@@ -11,6 +11,7 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./user.component.css', '../shared/shared.css']
 })
 export class UserComponent {
+  enableControl = true
   socket = io(MessageConstant.baseUrl);
   actualAnswerIndex$ = -1;
   selectedAnswerIndex$ = -1;
@@ -46,6 +47,7 @@ export class UserComponent {
 
   ngOnInit(): void {
     this.socket.on(MessageConstant.msgNextQuestion, (data) => {
+      this.enableControl = true;
       this.currentMessage$ = "";
       this.actualAnswerIndex$ = -1
       this.selectedAnswerIndex$ = -1;
@@ -55,13 +57,15 @@ export class UserComponent {
       this.currentMessage$ = data;
     })
     this.socket.on(MessageConstant.msgStopQuiz, (data) => {
+      this.enableControl = false;
       this.currentMessage$ = data;
     })
     this.socket.on(MessageConstant.msgError, (error) => {
       console.error('Socket error:', error);
     });
     this.socket.on(MessageConstant.msgAnswerQuestion, (data) => {
-      this.actualAnswerIndex$ = +data - 1;
+      this.enableControl = false;
+      this.actualAnswerIndex$ = +data;
 
       let answer: IAnswer = {
         questionid: this.currentQuestion$.id,
@@ -69,6 +73,7 @@ export class UserComponent {
         actual: this.actualAnswerIndex$,
         timespent: 0,
       }
+      //alert(JSON.stringify(answer))
       this.currentCandidate$.answer.push(answer);
 
       if (this.selectedAnswerIndex$ == this.actualAnswerIndex$) {
