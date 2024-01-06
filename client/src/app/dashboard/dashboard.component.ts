@@ -18,7 +18,7 @@ export class DashboardComponent {
 
   ngOnInit(): void {
     this.getParticipantList();
-    this.socket.on(MessageConstant.msgAnswerQuestion, (data) => {
+    this.socket.on(MessageConstant.msgUpdateDashboard, (data) => {
       this.getParticipantList();
     });
     this.socket.on(MessageConstant.apiAddParticipant, (data) => {

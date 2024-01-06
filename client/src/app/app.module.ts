@@ -9,6 +9,7 @@ import { UserComponent } from './user/user.component';
 import { MaterialModule } from './app.material.module';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
+import { APP_BASE_HREF } from '@angular/common';
 
 @NgModule({
   declarations: [

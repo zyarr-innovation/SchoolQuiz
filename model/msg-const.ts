@@ -1,5 +1,6 @@
 export class MessageConstant {
-    static readonly baseUrl = 'http://localhost:3000';
+    //static readonly baseUrl = window.location.origin;
+    static readonly baseUrl = 'http://0.0.0.0:3000';
 
     static readonly apiStartQuiz = '/api/startquiz';
     static readonly apiStopQuiz = '/api/stopquiz';
@@ -18,4 +19,5 @@ export class MessageConstant {
     static readonly msgError = 'error';
     static readonly msgAnswerQuestion = 'msgAnswerQuestion';
     static readonly msgUpdateCandidate = 'msgUpdateCandidate';
+    static readonly msgUpdateDashboard = 'msgUpdateDashboard';
 }

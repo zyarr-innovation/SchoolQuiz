@@ -35,6 +35,10 @@ export class ParticipantList {
         if (!isFound) {
           this.participantList.push(updatedParticipant);
         }
+
+        this.io.emit(MessageConstant.msgUpdateDashboard, "true");
+
+
       });
     });
   }

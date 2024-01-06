@@ -4,10 +4,13 @@ import { EMPTY, catchError, from, of, tap, throwError } from "rxjs";
 import { MessageConstant } from "../../../../model/msg-const";
 import { IParticipant, IQuestion } from "../../../../model/model";
 
+
 @Injectable({
     providedIn: 'root',
 })
 export class QuizService {
+    static readonly baseUrl = window.location.origin;
+
     private participantList: IParticipant[] = [];
     private questionCurrent: IQuestion;
 
