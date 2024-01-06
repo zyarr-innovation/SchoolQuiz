@@ -19,16 +19,21 @@ export class ParticipantList {
     this.io.on('connection', (socket: Socket) => {
       console.log(`A user connected to Participant List: ${socket.id}`);
 
-      socket.on(MessageConstant.msgUpdateAnswer, (data) => {
+      socket.on(MessageConstant.msgUpdateCandidate, (data) => {
         let updatedParticipant: IParticipant = data;
-        let foundParticipant = this.participantList.find(
-          eachParticipant => eachParticipant.name == updatedParticipant.name
-        );
+        let isFound = false
+        for (let eachParticipant of this.participantList) {
+          if (eachParticipant.id == updatedParticipant.id) {
+            isFound = true;
+            eachParticipant.score = updatedParticipant.score
+            eachParticipant.answer = updatedParticipant.answer
+            eachParticipant.timespent = updatedParticipant.timespent
+            break;
+          }
+        }
 
-        if (!foundParticipant) {
+        if (!isFound) {
           this.participantList.push(updatedParticipant);
-        } else {
-          foundParticipant = updatedParticipant;
         }
       });
     });
@@ -61,26 +66,26 @@ export class ParticipantList {
       return retValue;
     }
 
-    let foundParticipant = this.participantList.find(
-      eachParticipant => eachParticipant.name == inParticipant.name
-    );
-
-    if (!foundParticipant) {
-      inParticipant.id = 0 < this.participantList.length ?
-        this.participantList[this.participantList.length].id + 1 : 1;
-
-      inParticipant.score = 0;
-      inParticipant.timespent = 0;
-      this.participantList.push(inParticipant);
-      retValue = inParticipant;
-
-      this.io.emit('addparticpant', retValue);
-    } else {
-      foundParticipant.score = 0;
-      foundParticipant.timespent = 0;
-      retValue = foundParticipant;
+    for (let eachParticipant of this.participantList) {
+      if (eachParticipant.name == inParticipant.name) {
+        eachParticipant.score = 0;
+        eachParticipant.timespent = 0;
+        retValue = eachParticipant;
+        return retValue;
+      }
     }
 
+    if (0 === this.participantList.length) {
+      inParticipant.id = 0;
+    } else {
+      inParticipant.id = this.participantList[this.participantList.length - 1].id + 1;
+    }
+    inParticipant.score = 0;
+    inParticipant.timespent = 0;
+    this.participantList.push(inParticipant);
+    retValue = inParticipant;
+
+    this.io.emit(MessageConstant.apiAddParticipant, retValue);
     return retValue;
   }
 
@@ -100,8 +105,9 @@ export class ParticipantList {
   }
 
   getList(): IParticipant[] {
-    const cloneParticipantList = [...this.participantList];
+    let cloneParticipantList = [...this.participantList];
     cloneParticipantList.sort((a, b) => a.score - b.score);
+    cloneParticipantList.reverse()
     return cloneParticipantList;
   }
 }

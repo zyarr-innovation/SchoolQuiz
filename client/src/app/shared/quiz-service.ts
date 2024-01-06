@@ -63,4 +63,7 @@ export class QuizService {
 
     }
 
+    getParticipant(id: number) {
+        return this.http.get<IParticipant>(`${MessageConstant.baseUrl}${MessageConstant.apiGetParticipant}?id=${id}`);
+    }
 }

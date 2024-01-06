@@ -91,7 +91,7 @@ export class AdminComponent {
   startQuiz() {
     this.quizService.startQuiz().subscribe(console.log)
   }
-
+ 
   stopQuiz() {
     this.quizService.stopQuiz().subscribe(console.log)
   }

@@ -45,7 +45,7 @@ export class LoginComponent implements OnInit {
       if (outParticipant.name == 'admin') {
         this.router.navigate(['/admin']);
       } else {
-        this.router.navigate(['/user', outParticipant.name]);
+        this.router.navigate(['/user', outParticipant.id]);
       }
 
       return true;

@@ -7,14 +7,15 @@ export class MessageConstant {
     static readonly apiAnswerQuestion = '/api/answerquestion';
 
     static readonly apiAddParticipant = '/api/addparticipant';
+    static readonly apiGetParticipant = '/api/getparticipant';
     static readonly apiRemoveParticipant = '/api/removeparticipant';
     static readonly apiGetParticipantList = '/api/getparticipantlist';
 
-
+    static readonly msgAddparticpant = 'addparticpant';
     static readonly msgNextQuestion = 'msgNextQuestion';
     static readonly msgStartQuiz = 'msgStartQuiz';
     static readonly msgStopQuiz = 'msgStopQuiz';
     static readonly msgError = 'error';
     static readonly msgAnswerQuestion = 'msgAnswerQuestion';
-    static readonly msgUpdateAnswer = 'msgUpdateAnswer';
+    static readonly msgUpdateCandidate = 'msgUpdateCandidate';
 }

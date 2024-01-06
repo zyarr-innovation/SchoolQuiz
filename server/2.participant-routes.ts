@@ -9,6 +9,12 @@ export function setupParticipantRoutes(participantList: ParticipantList) {
             res.status(200).json(addedparticipant);
         },
 
+        getParticipant: (req: Request, res: Response) => {
+            let participantId = req.query.id;
+            let gotparticipant = participantList.getById(+participantId!);
+            res.status(200).json(gotparticipant);
+        },
+
         removeParticipant: (req: Request, res: Response) => {
             let exitingParticipant = req.body;
             participantList.remove(exitingParticipant);

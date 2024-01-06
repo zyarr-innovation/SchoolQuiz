@@ -21,6 +21,9 @@ export class DashboardComponent {
     this.socket.on(MessageConstant.msgAnswerQuestion, (data) => {
       this.getParticipantList();
     });
+    this.socket.on(MessageConstant.apiAddParticipant, (data) => {
+      this.getParticipantList();
+    });
   }
 
   getParticipantList() {

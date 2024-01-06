@@ -1,24 +1,17 @@
 <div class="main-class">
     <mat-card class="main-card">
         <mat-card-header class="main-card-header">
-            <mat-card-title>Zyarr Quiz</mat-card-title>
-            <mat-card-subtitle>Admin Control</mat-card-subtitle>
+            <mat-card-title>Zyarr Quiz Dashboard</mat-card-title>
+            <mat-card-subtitle>The score of participants</mat-card-subtitle>
         </mat-card-header>
         <mat-card-content class="main-card-content">
             <mat-divider></mat-divider>
-            <mat-card>
-                <mat-card-header>
-                    <mat-card-title>The score of participants</mat-card-title>
-                </mat-card-header>
-                <mat-card-content>
-                    <div *ngFor="let eachParticipant of participantList$; let i = index" class="option-container">
-                        <div class="option-sub-container">
-                            <div class="class-name">{{eachParticipant.name}}</div>
-                            <div class="class-score">{{eachParticipant.score}}</div>
-                        </div>
-                    </div>
-                </mat-card-content>
-            </mat-card>
+            <div *ngFor="let eachParticipant of participantList$; let i = index" class="option-container">
+                <div class="class-data">
+                    <div class="class-name">{{eachParticipant.name}}</div>
+                    <div class="class-score">{{eachParticipant.score}}</div>
+                </div>
+            </div>
         </mat-card-content>
     </mat-card>
 </div>

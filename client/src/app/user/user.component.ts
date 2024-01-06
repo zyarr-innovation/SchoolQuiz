@@ -3,6 +3,7 @@ import { IAnswer, IParticipant, IQuestion } from '../../../../model/model';
 import { MessageConstant } from '../../../../model/msg-const';
 import { io } from 'socket.io-client';
 import { ActivatedRoute } from '@angular/router';
+import { QuizService } from '../shared/quiz-service';
 
 
 @Component({
@@ -33,8 +34,9 @@ export class UserComponent {
     answer: 1
   }
 
-  constructor(private activatedroute: ActivatedRoute) {
-    let name = this.activatedroute.snapshot.paramMap.get("name");
+  constructor(private activatedroute: ActivatedRoute,
+    private quizService: QuizService) {
+    let id = this.activatedroute.snapshot.paramMap.get("id");
     this.currentCandidate$ = {
       id: 0,
       name: name!,
@@ -43,6 +45,9 @@ export class UserComponent {
       timespent: 0,
       answer: []
     }
+    this.quizService.getParticipant(+id!).subscribe(data => {
+      this.currentCandidate$ = data
+    })
   }
 
   ngOnInit(): void {
@@ -73,13 +78,13 @@ export class UserComponent {
         actual: this.actualAnswerIndex$,
         timespent: 0,
       }
-      //alert(JSON.stringify(answer))
+
       this.currentCandidate$.answer.push(answer);
 
       if (this.selectedAnswerIndex$ == this.actualAnswerIndex$) {
         this.currentCandidate$.score++;
       }
-      this.socket.emit(MessageConstant.msgUpdateAnswer, this.currentCandidate$);
+      this.socket.emit(MessageConstant.msgUpdateCandidate, this.currentCandidate$);
     })
   }
 

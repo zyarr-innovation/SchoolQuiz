@@ -91,6 +91,7 @@ export class App {
 
     const participantRoutes = setupParticipantRoutes(this.participantList);
     this.app.post(MessageConstant.apiAddParticipant, participantRoutes.addParticipant);
+    this.app.get(MessageConstant.apiGetParticipant, participantRoutes.getParticipant);
     this.app.get(MessageConstant.apiRemoveParticipant, participantRoutes.removeParticipant);
     this.app.get(MessageConstant.apiGetParticipantList, participantRoutes.getParticipantList);
 
