@@ -54,6 +54,11 @@ export class ParticipantList {
 
   add(inParticipant: IParticipant): IParticipant {
     let retValue;
+
+    if (inParticipant.name == 'admin') {
+      retValue = inParticipant;
+    }
+
     let foundParticipant = this.participantList.find(
       eachParticipant => eachParticipant.name == inParticipant.name
     );

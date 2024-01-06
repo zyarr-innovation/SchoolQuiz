@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { QuizService } from '../shared/quiz-service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -11,6 +12,7 @@ export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
 
   constructor(private formBuilder: FormBuilder,
+    private router: Router,
     private quizService: QuizService) { }
 
   ngOnInit() {
@@ -38,6 +40,15 @@ export class LoginComponent implements OnInit {
     this.quizService.registerParticipant(
       this.loginForm.controls['username'].value,
       this.loginForm.controls['password'].value
-    )
+    ).subscribe(outParticipant => {
+      console.log(outParticipant);
+      if (outParticipant.name == 'admin') {
+        this.router.navigate(['/admin']);
+      } else {
+        this.router.navigate(['/user', outParticipant.name]);
+      }
+
+      return true;
+    });
   }
 }

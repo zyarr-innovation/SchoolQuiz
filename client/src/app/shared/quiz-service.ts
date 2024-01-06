@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-import { EMPTY, catchError, from, of, throwError } from "rxjs";
+import { EMPTY, catchError, from, of, tap, throwError } from "rxjs";
 import { MessageConstant } from "../../../../model/msg-const";
 import { IParticipant, IQuestion } from "../../../../model/model";
 
@@ -48,22 +48,18 @@ export class QuizService {
             timespent: 0,
             answer: []
         }
-        this.http.post<IParticipant>(
+
+        return this.http.post<IParticipant>(
             `${MessageConstant.baseUrl}${MessageConstant.apiAddParticipant}`,
             inParticipant
         ).pipe(
+            tap(participant => this.participantList.push(participant)),
             catchError(error => {
                 console.log('An error occurred:', error);
                 // Handle the error as per your requirements
                 return throwError('Something went wrong. Please try again later.');
             })
-        ).subscribe(
-            outParticipant => {
-                console.log(outParticipant);
-                this.participantList.push(outParticipant)
-                return true;
-            }
-        );
+        )
 
     }
 

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IAnswer, IParticipant, IQuestion } from '../../../../model/model';
 import { MessageConstant } from '../../../../model/msg-const';
 import { io } from 'socket.io-client';
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -31,6 +32,18 @@ export class UserComponent {
     answer: 1
   }
 
+  constructor(private activatedroute: ActivatedRoute) {
+    let name = this.activatedroute.snapshot.paramMap.get("name");
+    this.currentCandidate$ = {
+      id: 0,
+      name: name!,
+      email: name + "@zyarrinnovation.com",
+      score: 0,
+      timespent: 0,
+      answer: []
+    }
+  }
+
   ngOnInit(): void {
     this.socket.on(MessageConstant.msgNextQuestion, (data) => {
       this.currentMessage$ = "";
@@ -47,7 +60,6 @@ export class UserComponent {
     this.socket.on(MessageConstant.msgError, (error) => {
       console.error('Socket error:', error);
     });
-
     this.socket.on(MessageConstant.msgAnswerQuestion, (data) => {
       this.actualAnswerIndex$ = +data - 1;
 
@@ -63,7 +75,6 @@ export class UserComponent {
         this.currentCandidate$.score++;
       }
       this.socket.emit(MessageConstant.msgUpdateAnswer, this.currentCandidate$);
-
     })
   }
 

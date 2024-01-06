@@ -11,6 +11,7 @@ export interface IAnswer {
     actual: number;
     timespent: number;
 }
+
 export interface IParticipant {
     id: number;
     name: string;
