@@ -104,8 +104,8 @@ export class App {
     const participantRoutes = setupParticipantRoutes(this.participantList);
     this.app.post(MessageConstant.apiAddParticipant, participantRoutes.addParticipant);
     this.app.get(MessageConstant.apiGetParticipant, participantRoutes.getParticipant);
-    this.app.get(MessageConstant.apiRemoveParticipant, participantRoutes.removeParticipant);
-    this.app.get(MessageConstant.apiGetParticipantList, participantRoutes.getParticipantList);
+    this.app.post(MessageConstant.apiRemoveParticipant, participantRoutes.removeParticipant);
+    this.app.get(MessageConstant.fetchAddParticipant, participantRoutes.getParticipantList);
 
     this.app.get('*', (req: Request, res: Response) => {
       res.sendFile(path.join(this.staticPath, 'index.html'));

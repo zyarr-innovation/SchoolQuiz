@@ -18,7 +18,7 @@ export function setupParticipantRoutes(participantList: ParticipantList) {
         removeParticipant: (req: Request, res: Response) => {
             let exitingParticipant = req.body;
             participantList.remove(exitingParticipant);
-            res.status(200).json({ message: 'Rmoved Participant!' });
+            res.status(200).json({ message: 'Removed Participant!' });
         },
 
         getParticipantList: (req: Request, res: Response) => {

@@ -24,10 +24,13 @@ export class DashboardComponent {
     this.socket.on(MessageConstant.apiAddParticipant, (data) => {
       this.getParticipantList();
     });
+    this.socket.on(MessageConstant.apiRemoveParticipant, (data) => {
+      this.getParticipantList();
+    });
   }
 
   getParticipantList() {
-    this.quizService.getParticipantList().subscribe(data => {
+    this.quizService.fetchParticipants().subscribe(data => {
       console.log(data)
       this.participantList$ = data
     });

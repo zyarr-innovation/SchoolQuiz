@@ -4,11 +4,13 @@ import { AdminComponent } from './admin/admin.component';
 import { UserComponent } from './user/user.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './login/login.component';
+import { ParticipantListComponent } from './participant-list/participant-list.component';
 
 const routes: Routes = [
   { path: 'admin', component: AdminComponent },
   { path: 'user/:id', component: UserComponent },
   { path: 'dashboard', component: DashboardComponent },
+  { path: 'participant-list', component: ParticipantListComponent },
   { path: '**', component: LoginComponent },
 ];
 

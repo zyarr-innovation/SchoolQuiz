@@ -10,6 +10,7 @@ import { MaterialModule } from './app.material.module';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
 import { APP_BASE_HREF } from '@angular/common';
+import { ParticipantListComponent } from './participant-list/participant-list.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { APP_BASE_HREF } from '@angular/common';
     AdminComponent,
     UserComponent,
     DashboardComponent,
-    LoginComponent
+    LoginComponent,
+    ParticipantListComponent
   ],
   imports: [
     BrowserModule,

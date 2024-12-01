@@ -27,10 +27,6 @@ export class QuizService {
     }
 
     //====================================| Participants Functions
-    getParticipantList() {
-        return this.http.get<IParticipant[]>(`${MessageConstant.baseUrl}${MessageConstant.apiGetParticipantList}`);
-    }
-
     registerParticipant(inPartipantName: string, inParticipantPassword: string) {
         let inParticipant: IParticipant = {
             id: 0,
@@ -57,5 +53,13 @@ export class QuizService {
 
     getParticipant(id: number) {
         return this.http.get<IParticipant>(`${MessageConstant.baseUrl}${MessageConstant.apiGetParticipant}?id=${id}`);
+    }
+
+    fetchParticipants() {
+        return this.http.get<IParticipant[]>(`${MessageConstant.baseUrl}${MessageConstant.fetchAddParticipant}`);
+    }
+    
+    deleteParticipant(participant: IParticipant) {
+          return this.http.post(`${MessageConstant.baseUrl}${MessageConstant.apiRemoveParticipant}`, participant);
     }
 }

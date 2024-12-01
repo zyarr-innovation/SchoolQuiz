@@ -1,0 +1,24 @@
+<div class="participant-list">
+    <h2>Participant List</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Score</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let participant of participants">
+          <td>{{ participant.id }}</td>
+          <td>{{ participant.name }}</td>
+          <td>{{ participant.score }}</td>
+          <td>
+            <button (click)="deleteParticipant(participant)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
