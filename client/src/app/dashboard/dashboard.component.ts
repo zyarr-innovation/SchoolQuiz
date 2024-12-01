@@ -19,13 +19,13 @@ export class DashboardComponent {
   ngOnInit(): void {
     this.getParticipantList();
     this.socket.on(MessageConstant.msgUpdateDashboard, (data) => {
-      this.getParticipantList();
+      setTimeout(async () => this.getParticipantList(), 1000);
     });
     this.socket.on(MessageConstant.apiAddParticipant, (data) => {
-      this.getParticipantList();
+      setTimeout(async () => this.getParticipantList(), 1000);
     });
     this.socket.on(MessageConstant.apiRemoveParticipant, (data) => {
-      this.getParticipantList();
+      setTimeout(async () => this.getParticipantList(), 1000);
     });
   }
 

@@ -25,6 +25,7 @@ export class UserComponent {
     timespent: 0,
     answer: []
   }
+  participantRemoved = false; // New flag for UI dimming
 
   currentMessage$: string = "Welcome to Zyarr Quiz";
   currentQuestion$: IQuestion = {
@@ -86,6 +87,14 @@ export class UserComponent {
       }
       this.socket.emit(MessageConstant.msgUpdateCandidate, this.currentCandidate$);
     })
+
+    // Add handler for participant removal
+    this.socket.on("removeparticpant", (removedParticipant: IParticipant) => {
+      if (removedParticipant.id === this.currentCandidate$.id) {
+        this.participantRemoved = true;
+        this.socket.off(); // Unsubscribe all handlers
+      }
+    });
   }
 
   onAnswerClick(index: number) {

@@ -1,3 +1,8 @@
+.dimmed {
+    pointer-events: none;
+    opacity: 0.5;
+  }
+  
 .option-container {
     display: flex;
     /* Optional, use this if you want the button to stretch the full width even if it contains no other elements */

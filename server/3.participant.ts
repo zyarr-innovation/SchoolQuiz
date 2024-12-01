@@ -100,8 +100,13 @@ export class ParticipantList {
     );
 
     if (foundParticipant) {
-      this.participantList.splice(foundParticipant.id, foundParticipant.id + 1);
-      this.io.emit('removeparticpant', foundParticipant);
+      if(this.participantList.length == 1){
+        this.participantList = [];
+      } else {
+        this.participantList.splice(foundParticipant.id, foundParticipant.id + 1);
+      }
+      
+      this.io.emit(MessageConstant.apiRemoveParticipant, foundParticipant);
       retValue = true;
     }
 
