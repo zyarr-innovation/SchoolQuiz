@@ -51,7 +51,6 @@ export class AdminComponent {
       this.currentQuestion$ = data;
       this.nextState()
     })
-
     this.socket.on(MessageConstant.msgStartQuiz, (data) => {
       this.currentMessage$ = data;
       this.startState()

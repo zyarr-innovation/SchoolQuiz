@@ -9,19 +9,8 @@ import { IParticipant, IQuestion } from "../../../../model/model";
     providedIn: 'root',
 })
 export class QuizService {
-    static readonly baseUrl = window.location.origin;
-
     private participantList: IParticipant[] = [];
-    private questionCurrent: IQuestion;
-
-    constructor(private http: HttpClient) {
-        this.questionCurrent = {
-            id: 0,
-            question: 'Which is the Best Quiz App',
-            optionList: ['Zyarr Quiz', 'Zyarr Quiz', 'Zyarr Quiz', 'Zyarr Quiz'],
-            answer: 1
-        };
-    }
+    constructor(private http: HttpClient) { }
 
     //====================================| Quiz Functions
     startQuiz() {

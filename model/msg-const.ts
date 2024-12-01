@@ -1,6 +1,6 @@
 export class MessageConstant {
     //static readonly baseUrl = window.location.origin;
-    static readonly baseUrl = 'http://0.0.0.0:3000';
+    static readonly baseUrl = window.location.origin;
 
     static readonly apiStartQuiz = '/api/startquiz';
     static readonly apiStopQuiz = '/api/stopquiz';

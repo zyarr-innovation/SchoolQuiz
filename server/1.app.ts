@@ -8,7 +8,7 @@ import mime from 'mime';
 import { ParticipantList } from './3.participant';
 import { setupParticipantRoutes } from './2.participant-routes';
 import { MessageConstant } from '../model/msg-const';
-
+import cors from 'cors';
 export class App {
   private app: express.Application;
   private staticPath: string;
@@ -60,6 +60,17 @@ export class App {
     });
   }
 
+  private setupCORS(): void {
+    const corsOptions = {
+        origin: 'http://localhost:3000', // Allow requests from this origin
+        methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Allowed HTTP methods
+        allowedHeaders: ['Content-Type', 'Authorization'], // Allowed headers
+        credentials: true, // Allow credentials (cookies, etc.)
+    };
+
+    this.app.use(cors(corsOptions));
+  } 
+
   private setupStaticFileHeader() {
     // Serve static files with correct Content-Type headers
     this.app.use(express.static(this.staticPath, {
@@ -75,6 +86,7 @@ export class App {
   private setupMiddleware() {
     // Middleware setup, same as before
     this.app.use(express.json());
+    this.setupCORS ();
     this.setupStaticFileHeader();
     this.setupContentSecurity();
     this.setupRoutes();

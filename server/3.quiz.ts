@@ -37,7 +37,7 @@ export class Quiz {
 
     public startQuiz() {
         this.quizRunning = true;
-        let currentQuestion: IQuestion = this.questionList.getCurrent();
+        let currentQuestion: IQuestion = this.questionList.getQuestion();
         this.io.emit(MessageConstant.msgNextQuestion, currentQuestion);
     }
 
@@ -52,13 +52,13 @@ export class Quiz {
             this.quizRunning = false;
             this.io.emit(MessageConstant.msgStopQuiz, 'Quiz has stopped!');
         } else {
-            let currentQuestion: IQuestion = this.questionList.getCurrent();
+            let currentQuestion: IQuestion = this.questionList.getQuestion();
             this.io.emit(MessageConstant.msgNextQuestion, currentQuestion);
         }
     }
 
     public answerQuestion() {
-        let currentQuestion: IQuestion = this.questionList.getCurrent();
+        let currentQuestion: IQuestion = this.questionList.getQuestion();
         this.io.emit(MessageConstant.msgAnswerQuestion, currentQuestion.answer);
     }
 }

@@ -62,7 +62,7 @@ export class ParticipantList {
   }
 
   add(inParticipant: IParticipant): IParticipant {
-    let retValue;
+    let retValue: IParticipant;
 
     if (inParticipant.name == 'admin') {
       this.participantList = [];

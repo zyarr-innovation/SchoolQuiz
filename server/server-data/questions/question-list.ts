@@ -47,30 +47,30 @@ export class QuestionList {
 
   randomizeOptions(currentQuestion: IQuestion): IQuestion {
     //console.log("Original Ans (%d): %s", currentQuestion.answer, currentQuestion.optionList[currentQuestion.answer])
-    let lastQuestion = currentQuestion.optionList[currentQuestion.answer]
+    let storedOptionAnswer = currentQuestion.optionList[currentQuestion.answer]
 
     let orderIndexArray = this.getRandomOrder();
-    let optionList: string[] = []
+    let newOptionList: string[] = []
     for (let i = 0; i < orderIndexArray.length; ++i) {
-      let recentQuestion: string = currentQuestion.optionList[orderIndexArray[i]]
-      optionList.push(recentQuestion);
+      let recentOption: string = currentQuestion.optionList[orderIndexArray[i]]
+      newOptionList.push(recentOption);
 
-      if (lastQuestion === recentQuestion) {
+      if (storedOptionAnswer === recentOption) {
         currentQuestion.answer = i
       }
     }
-    currentQuestion.optionList = optionList;
+    currentQuestion.optionList = newOptionList;
 
     //console.log("New Ans (%d): %s", currentQuestion.answer, currentQuestion.optionList[currentQuestion.answer])
 
     return currentQuestion;
   }
 
-  getList(inCount: number): IQuestion[] {
+  getList(): IQuestion[] {
     return this.questionList;
   }
 
-  getCurrent(): IQuestion {
+  getQuestion(): IQuestion {
     let currentQuestion: IQuestion = this.questionList[this.currentQuestionIndex];
     return currentQuestion;
   }
