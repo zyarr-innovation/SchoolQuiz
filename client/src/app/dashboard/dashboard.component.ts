@@ -1,13 +1,17 @@
 import { Component } from '@angular/core';
-import { IParticipant, IQuestion } from '../../../../model/model';
-import { QuizService } from '../shared/quiz-service';
-import { io } from 'socket.io-client'
+import { CommonModule } from '@angular/common';
+import { MatCardModule } from '@angular/material/card';
+import { MatListModule } from '@angular/material/list';
 import { MessageConstant } from '../../../../model/msg-const';
+import { io } from 'socket.io-client';
+import { IParticipant } from '../../../../model/model';
+import { QuizService } from '../quiz.service';
 
 @Component({
   selector: 'app-dashboard',
+  imports: [CommonModule, MatCardModule, MatListModule],
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css', '../shared/shared.css']
+  styleUrl: './dashboard.component.css'
 })
 export class DashboardComponent {
   socket = io(MessageConstant.baseUrl);

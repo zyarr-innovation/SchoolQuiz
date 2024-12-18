@@ -1,0 +1,35 @@
+<div class="main-class">
+    <mat-card class="main-card">
+        <mat-card-header class="main-card-header">
+            <mat-card-title class="main-card-title">Participant Control</mat-card-title>
+            <mat-card-subtitle class="main-card-subtitle">
+                <div class="main-card-subtitle-timespend">TimeSpend: {{currentCandidate$.timespent}}</div>
+                <div class="main-card-subtitle-name">Name: {{currentCandidate$.name}}</div>
+                <div class="main-card-subtitle-score">Score: {{currentCandidate$.score}}</div>
+            </mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content class="main-card-content">
+            <div *ngIf="currentMessage$">
+                {{currentMessage$}}
+            </div>
+            <div *ngIf="!currentMessage$" class="sub-card-block">
+                <p>
+                    {{ currentQuestion$.question }}
+                </p>
+                <mat-list>
+                    <mat-list-item *ngFor="let eachOption of  currentQuestion$.optionList; let i = index" 
+                        class="option-container urdu-text"
+                        [ngClass]="{
+                            'actualAnswer-button': i === actualAnswerIndex$,
+                            'selectedAnswer-button': i === selectedAnswerIndex$,
+                            'sameAnswer-button': i === actualAnswerIndex$ && i === selectedAnswerIndex$}"
+                            [disabled]="!enableControl" 
+                            (click)="onAnswerClick(i)"
+                    >
+                        {{eachOption}}
+                    </mat-list-item>
+                </mat-list>
+            </div> 
+        </mat-card-content>
+    </mat-card>
+</div>

@@ -1,9 +1,12 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { IQuestion } from '../../../../model/model';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatListModule } from '@angular/material/list';
 import { io } from 'socket.io-client';
-import { QuizService } from '../shared/quiz-service';
 import { MessageConstant } from '../../../../model/msg-const';
-
+import { IQuestion } from '../../../../model/model';
+import { QuizService } from '../quiz.service';
 
 export enum tagStartStop {
   DISABLE = 0,
@@ -19,11 +22,11 @@ export enum tagNextAns {
 
 @Component({
   selector: 'app-admin',
+  imports:[CommonModule, MatCardModule, MatButtonModule, MatListModule],
   templateUrl: './admin.component.html',
-  styleUrls: ['./admin.component.css', '../shared/shared.css']
+  styleUrl: './admin.component.css'
 })
 export class AdminComponent {
-
   enumstartStop = tagStartStop;
   enumNextAns = tagNextAns;
   appNextState = tagStartStop.START
@@ -32,12 +35,12 @@ export class AdminComponent {
   socket = io(MessageConstant.baseUrl);
   actualAnswerIndex$ = -1;
 
-  currentMessage$: string = "Welcome to Zyarr Quiz";
+  currentMessage$: string = "Welcome to the ZYInnovators Quiz Competition! Get ready to challenge your knowledge. Remember, it's not just about winning. Think, learn, and have fun! Enjoy the learning journey!"
   currentQuestion$: IQuestion = {
     id: 0,
-    question: "Which is the highest peak",
-    optionList: ["Mount Everest", "Mount Abu", "Mount Isa", "Mount Musa"],
-    answer: 1
+    question: "Welcome to the ZYInnovators Quiz Competition!",
+    optionList: ["Get ready to challenge your knowledge", "Remember, it's not just about winning", "Think, learn, and have fun!", "Enjoy the learning journey!"],
+    answer: -100
   }
 
   constructor(private quizService: QuizService) {
@@ -65,7 +68,7 @@ export class AdminComponent {
     });
     this.socket.on(MessageConstant.msgAnswerQuestion, (data) => {
       console.log(data)
-      this.actualAnswerIndex$ = +data;
+      this.actualAnswerIndex$ = +data -1;
       this.answerState()
     })
   }

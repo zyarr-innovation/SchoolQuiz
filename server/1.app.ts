@@ -20,7 +20,7 @@ export class App {
 
   constructor(port: number) {
     this.app = express();
-    this.staticPath = path.resolve(__dirname, '../../../client/dist/client');
+    this.staticPath = path.resolve(__dirname, '../../../new-client/dist/test/browser');
 
     this.port = port;
     this.server = http.createServer(this.app);
@@ -38,12 +38,12 @@ export class App {
   private setupContentSecurity() {
     const cspConfig = {
       'default-src': ["'self'"],
-      'script-src': ["'self'", "'unsafe-inline'", "'unsafe-eval'", MessageConstant.baseUrl], // Add 'http://localhost:3000' for Socket.IO
-      'style-src': ["'self'", "'unsafe-inline'"],
+      'script-src': ["'self'", "'unsafe-inline'", "'unsafe-eval'", MessageConstant.baseUrl], // For inline scripts and external scripts
+      'style-src': ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"], // Allow Google Fonts CSS
       'img-src': ["'self'", "data:"],
-      'font-src': ["'self'"],
+      'font-src': ["'self'", "https://fonts.gstatic.com"], // Allow Google Fonts
     };
-
+  
     // Function to build the CSP header value
     function getCSPHeaderValue(config: { [key: string]: string[] }) {
       const directives = Object.keys(config).map((key) => {
@@ -52,7 +52,7 @@ export class App {
       });
       return directives.join('; ');
     }
-
+  
     // Middleware to set the CSP header
     this.app.use((req: Request, res: Response, next: NextFunction) => {
       res.setHeader('Content-Security-Policy', getCSPHeaderValue(cspConfig));
@@ -62,7 +62,7 @@ export class App {
 
   private setupCORS(): void {
     const corsOptions = {
-        origin: 'http://localhost:3000', // Allow requests from this origin
+        origin: ['http://localhost:3000', 'http://localhost:4200'], // Allow requests from this origin
         methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Allowed HTTP methods
         allowedHeaders: ['Content-Type', 'Authorization'], // Allowed headers
         credentials: true, // Allow credentials (cookies, etc.)

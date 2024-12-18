@@ -5,29 +5,22 @@
             <mat-card-subtitle class="main-card-subtitle">Admin Control</mat-card-subtitle>
         </mat-card-header>
         <mat-card-content class="main-card-content">
-            <mat-divider></mat-divider>
             <div *ngIf="currentMessage$">
-                <mat-card class=" sub-card">
-                    <mat-card-header class="sub-card-header">
-                        <mat-card-title>{{currentMessage$}}</mat-card-title>
-                    </mat-card-header>
-                </mat-card>
+                {{currentMessage$}}
             </div>
-            <div *ngIf="!currentMessage$">
-                <mat-card class="sub-card">
-                    <mat-card-header class="sub-card-header urdu-text">
-                        <mat-card-title>{{currentQuestion$.question}}</mat-card-title>
-                    </mat-card-header>
-                    <mat-card-content class="sub-card-content">
-                        <div *ngFor="let eachOption of currentQuestion$.optionList; let i = index"
-                            class="option-container">
-                            <button class="option urdu-text"
-                                [ngClass]="{'actualAnswer-button': i === actualAnswerIndex$}">{{eachOption}}</button>
-                        </div>
-                    </mat-card-content>
-                </mat-card>
-            </div>
-            <mat-divider></mat-divider>
+            <div *ngIf="!currentMessage$" class="sub-card-block">
+                <p>
+                    {{ currentQuestion$.question }}
+                </p>
+                <mat-list>
+                    <mat-list-item *ngFor="let eachOption of  currentQuestion$.optionList; let i = index" 
+                        class="option-container urdu-text"
+                        [ngClass]="{'actualAnswer-button': i === actualAnswerIndex$}"
+                    >
+                        {{ eachOption }}
+                    </mat-list-item>
+                </mat-list>
+            </div> 
         </mat-card-content>
         <mat-card-actions class="main-card-actions">
             <button mat-raised-button color="primary" [disabled]="appNextState != enumstartStop.START"

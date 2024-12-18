@@ -1,21 +1,53 @@
-.main-card {
-    width: 100%;
-    display: flex;
+.main-class {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.class-data {
-    display: flex;
-    flex-direction: row;
-    margin: 5px;
+.main-card {
+  width: 95%;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.main-card-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.sub-card-block {
+  width: 100%;
+  margin: 5px;
+}
+
+mat-list-item {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  color: #000;
+  box-sizing: border-box;
+  font-size: 1.3rem;
+}
+
+.list-item-container {
+  display: flex; /* Flexbox for horizontal alignment */
+  justify-content: space-between; /* Name on the left, score on the right */
+  align-items: center; /* Vertically align items */
+  width: 100%;
 }
 
 .class-name {
-    width: 70%;
-    border-radius: 3px;
-    margin-right: 5px;
+  flex: 1; 
+  width: 90%;
+  text-align: left;
 }
 
 .class-score {
-    width: 20%;
-    border-radius: 3px;
+  width: 5%; 
 }

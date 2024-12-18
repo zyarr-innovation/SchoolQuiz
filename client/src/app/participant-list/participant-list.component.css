@@ -1,34 +1,64 @@
-.participant-list {
-    margin: 20px;
-    font-family: Arial, sans-serif;
+.main-class {
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   
-  table {
+  .main-card {
+    width: 95%;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+  }
+  
+  .main-card-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .sub-card-block {
     width: 100%;
-    border-collapse: collapse;
-    margin-top: 10px;
+    margin: 5px;
   }
   
-  th, td {
+  mat-list-item {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0;
+    background-color: white;
     border: 1px solid #ddd;
-    padding: 8px;
+    border-radius: 6px;
+    color: #000;
+    box-sizing: border-box;
+    font-size: 1.3rem;
   }
   
-  th {
-    background-color: #f4f4f4;
+  .list-item-container {
+    display: flex; /* Flexbox for horizontal alignment */
+    justify-content: space-between; /* Name on the left, score on the right */
+    align-items: center; /* Vertically align items */
+    width: 100%;
+  }
+  
+  .class-name {
+    flex: 1; 
+    width: 90%;
     text-align: left;
   }
   
-  button {
-    padding: 5px 10px;
-    color: white;
-    background-color: red;
-    border: none;
+  .class-score {
+    width: 5%; 
+  }
+  
+  .delete-icon {
     cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: darkred;
-  }
+    color: red; /* Icon color */
+    font-size: 24px; /* Adjust the size of the icon */
+    transition: color 0.2s;
+}
 
-  
+.delete-icon:hover {
+    color: darkred; /* Darker red on hover */
+}

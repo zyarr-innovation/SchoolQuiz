@@ -1,0 +1,44 @@
+<div class="main-class">
+  <mat-card class="main-card">
+      <mat-card-header class="main-card-header">
+          <mat-card-title class="main-card-title">Zyarr Quiz</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+          <div class="logo-container">
+             <img src="/img/Logo2.PNG" alt="Logo" class="logo">
+          </div>
+          <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="login-card-form">
+              <mat-form-field class="login-form-field">
+                  <mat-label for="username">Username</mat-label>
+                  <input matInput type="text" id="username" formControlName="username"
+                      class="login-form-input" 
+                      [ngClass]="{ 'is-invalid': isInvalid('username') }">
+                  <div *ngIf="isInvalid('username')" class="invalid-feedback">
+                      <mat-error *ngIf="registerForm.controls['username'].errors!['required']">name is
+                          required</mat-error>
+                      <mat-error *ngIf="registerForm.controls['username'].errors!['minlength']">Invalid
+                          Username</mat-error>
+                  </div>
+              </mat-form-field>
+
+              <mat-form-field class="login-form-field">
+                  <mat-label for="password">Password</mat-label>
+                  <input matInput type="password" id="password" formControlName="password"
+                       class="login-form-input" 
+                       [ngClass]="{ 'is-invalid': isInvalid('password') }">
+                  <div *ngIf="isInvalid('password')" class="invalid-feedback">
+                      <mat-error *ngIf="registerForm.controls['password'].errors!['required']">password is
+                          required</mat-error>
+                      <mat-error *ngIf="registerForm.controls['password'].errors!['minlength']">Invalid
+                          Password</mat-error>
+                  </div>
+              </mat-form-field>
+          </form>
+      </mat-card-content>
+      <mat-card-actions class="main-card-actions">
+          <button mat-raised-button color="primary"  type="button"  (click)="onSubmit()"  [disabled]="!registerForm.valid">
+            Login
+          </button>
+      </mat-card-actions>
+  </mat-card>
+</div>

@@ -1,0 +1,47 @@
+.main-class {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f5f5f5; /* Optional: Background color */
+}
+
+.main-card {
+  width: 400px; /* Optional: Adjust card width */
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  background-color: #ffffff;
+}
+
+.main-card-header {
+  align-self: center;
+}
+
+.logo-container {
+  display: flex;
+  justify-content: center;
+  margin: 30px;
+}
+
+.logo {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+}
+
+.login-card-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.login-form-field {
+  margin-bottom: 20px;
+}
+
+.main-card-actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}

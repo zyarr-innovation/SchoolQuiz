@@ -1,24 +1,25 @@
-<div class="participant-list">
-    <h2>Participant List</h2>
-    <table>
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Name</th>
-          <th>Score</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let participant of participants">
-          <td>{{ participant.id }}</td>
-          <td>{{ participant.name }}</td>
-          <td>{{ participant.score }}</td>
-          <td>
-            <button (click)="deleteParticipant(participant)">Delete</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  
+<div class="main-class">
+    <mat-card class="main-card">
+        <mat-card-header class="main-card-header">
+            <mat-card-title class="main-card-title">Zyarr Quiz</mat-card-title>
+            <mat-card-subtitle class="main-card-subtitle">Participant List</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content class="main-card-content">
+            <div *ngIf="participantList$" class="sub-card-block">
+                <mat-list>
+                    <mat-list-item *ngFor="let eachParticipant of participantList$; let i = index">
+                        <div class="list-item-container">
+                            <div class="class-name">{{ eachParticipant.name }}</div>
+                            <!-- Delete icon -->
+                            <mat-icon 
+                                class="delete-icon" 
+                                (click)="deleteParticipant(eachParticipant)">
+                                delete
+                            </mat-icon>
+                        </div>
+                    </mat-list-item>
+                </mat-list>
+            </div>
+        </mat-card-content>
+    </mat-card>
+</div>

@@ -1,32 +1,36 @@
-import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { QuizService } from '../shared/quiz-service';
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { MatCardModule } from '@angular/material/card';
+import { MatListModule } from '@angular/material/list';
+import { MatIconModule } from '@angular/material/icon';
+import { MessageConstant } from '../../../../model/msg-const';
+import { io } from 'socket.io-client';
+import { IParticipant } from '../../../../model/model';
+import { QuizService } from '../quiz.service';
+
 
 @Component({
   selector: 'app-participant-list',
+  imports: [CommonModule, MatCardModule, MatListModule, MatIconModule ],
   templateUrl: './participant-list.component.html',
-  styleUrls: ['./participant-list.component.css']
+  styleUrl: './participant-list.component.css'
 })
-export class ParticipantListComponent implements OnInit {
-  participants: any[] = [];
+export class ParticipantListComponent {
+  socket = io(MessageConstant.baseUrl);
+  participantList$: IParticipant[] = []
 
-  constructor(private http: HttpClient,
-    private quizService: QuizService
-  ) {}
-
-  ngOnInit(): void {
-    this.fetchParticipants();
+  constructor(private quizService: QuizService) {
   }
 
-  fetchParticipants(): void {
-    this.quizService.fetchParticipants().subscribe(
-      (data: any) => {
-        this.participants = data;
-      },
-      (error) => {
-        console.error('Error fetching participants:', error);
-      }
-    );
+  ngOnInit(): void {
+    this.getParticipantList();
+  }
+
+  getParticipantList() {
+    this.quizService.fetchParticipants().subscribe(data => {
+      console.log(data)
+      this.participantList$ = data
+    });
   }
 
   deleteParticipant(participant: any): void {
@@ -34,7 +38,7 @@ export class ParticipantListComponent implements OnInit {
     if (confirmDelete) {
       this.quizService.deleteParticipant(participant).subscribe(
         () => {
-          this.participants = this.participants.filter(p => p.id !== participant.id);
+          this.participantList$ = this.participantList$.filter(eachParticipant => eachParticipant.id !== participant.id);
           alert(`${participant.name} has been deleted.`);
         },
         (error: any) => {
