@@ -1,7 +1,6 @@
 export class MessageConstant {
     //static readonly baseUrl = window.location.origin;
-    //static readonly baseUrl = typeof window !== 'undefined' ? window.location.origin: "";
-    static readonly baseUrl = "http://localhost:3000";
+    static readonly baseUrl = typeof window !== 'undefined' ? window.location.origin: "";
 
     static readonly apiStartQuiz = '/api/startquiz';
     static readonly apiStopQuiz = '/api/stopquiz';
