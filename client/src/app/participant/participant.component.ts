@@ -35,7 +35,7 @@ export class ParticipantComponent {
   currentQuestion$: IQuestion = {
     id: 0,
     question: "Welcome to the ZYInnovators Quiz Competition!",
-    optionList: ["Get ready to challenge your knowledge", "Remember, it's not just about winning", "Think, learn, and have fun!", "Enjoy the learning journey!"],
+    options: ["Get ready to challenge your knowledge", "Remember, it's not just about winning", "Think, learn, and have fun!", "Enjoy the learning journey!"],
     answer: -100
   }
 

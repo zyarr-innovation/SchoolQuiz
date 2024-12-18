@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build": "tsc",
     "prestart": "tsc",
     "start": "node ./dist/server/1.app.js"
   },
@@ -22,6 +23,7 @@
     "http": "^0.0.1-security",
     "mime": "^3.0.0",
     "mime-types": "^2.1.35",
+    "rxjs": "^7.8.1",
     "socket.io": "^4.7.1",
     "typescript": "^5.1.6"
   }

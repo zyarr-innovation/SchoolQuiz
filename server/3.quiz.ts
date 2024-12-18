@@ -1,6 +1,6 @@
 import { Socket } from 'socket.io';
 import { Server as SocketIOServer } from 'socket.io';
-import { QuestionList } from './server-data/questions/question-list';
+import { QuestionList } from './processor/question-list';
 import { IParticipant, IQuestion } from '../model/model';
 import { MessageConstant } from '../model/msg-const';
 

@@ -13,7 +13,7 @@
                     {{ currentQuestion$.question }}
                 </p>
                 <mat-list>
-                    <mat-list-item *ngFor="let eachOption of  currentQuestion$.optionList; let i = index" 
+                    <mat-list-item *ngFor="let eachOption of  currentQuestion$.options; let i = index" 
                         class="option-container urdu-text"
                         [ngClass]="{'actualAnswer-button': i === actualAnswerIndex$}"
                     >

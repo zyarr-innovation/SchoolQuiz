@@ -20,7 +20,7 @@ export class App {
 
   constructor(port: number) {
     this.app = express();
-    this.staticPath = path.resolve(__dirname, '../../../new-client/dist/test/browser');
+    this.staticPath = path.resolve(__dirname, '../../../client/dist/test/browser');
 
     this.port = port;
     this.server = http.createServer(this.app);

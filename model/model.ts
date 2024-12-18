@@ -1,7 +1,7 @@
 export interface IQuestion {
     id: number;
     question: string;
-    optionList: string[];
+    options: string[];
     answer: number
 };
 
