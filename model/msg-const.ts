@@ -2,6 +2,7 @@ export class MessageConstant {
     //static readonly baseUrl = window.location.origin;
     static readonly baseUrl = typeof window !== 'undefined' ? window.location.origin: "";
 
+    static readonly apiGetLanguageInfo = '/api/getlanguageinfo';
     static readonly apiStartQuiz = '/api/startquiz';
     static readonly apiStopQuiz = '/api/stopquiz';
     static readonly apiNextQuestion = '/api/nextquestion';

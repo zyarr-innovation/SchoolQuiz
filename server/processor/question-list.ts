@@ -1,18 +1,23 @@
-import { map, Observable } from 'rxjs';
-import { IQuestion } from '../../model/model';
-import { QuestionCollection } from './questionCollection';
+import { map, Observable } from "rxjs";
+
+import { IQuestion } from "../../model/model";
+import { QuestionCollection } from "./questionCollection";
 
 const NUMBER_OF_QUESTIONS = 50;
 export class QuestionList {
   private questionCollection: QuestionCollection;
   private questionList!: IQuestion[];
   private currentQuestionIndex = 0;
-  private language = 'en';
+  private language = "en";
 
   constructor() {
     this.questionCollection = new QuestionCollection();
-    this.language = 'en';
-    this.getQuestions().subscribe(data => this.questionList = data);
+    this.language = process.env.language ?? "en";
+    this.getQuestions().subscribe((data) => (this.questionList = data));
+  }
+
+  getLanguageInfo(): string {
+    return this.language;
   }
 
   getQuestions(): Observable<IQuestion[]> {
@@ -28,7 +33,7 @@ export class QuestionList {
       })
     );
   }
-  
+
   private getRandomQuestions(
     questions: IQuestion[],
     count: number
@@ -63,7 +68,8 @@ export class QuestionList {
   }
 
   getQuestion(): IQuestion {
-    let currentQuestion: IQuestion = this.questionList[this.currentQuestionIndex];
+    let currentQuestion: IQuestion =
+      this.questionList[this.currentQuestionIndex];
     return currentQuestion;
   }
 
@@ -79,8 +85,10 @@ export class QuestionList {
       this.currentQuestionIndex = 0;
       isComplete = true;
     } else {
-      let currentQuestion: IQuestion = this.questionList[this.currentQuestionIndex];
-      this.questionList[this.currentQuestionIndex] = this.randomizeOptions(currentQuestion);
+      let currentQuestion: IQuestion =
+        this.questionList[this.currentQuestionIndex];
+      this.questionList[this.currentQuestionIndex] =
+        this.randomizeOptions(currentQuestion);
     }
 
     return isComplete;

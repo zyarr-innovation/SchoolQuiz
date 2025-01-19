@@ -13,12 +13,12 @@
                 {{currentMessage$}}
             </div>
             <div *ngIf="!currentMessage$" class="sub-card-block">
-                <p>
+                <p  matLine
+                   [ngClass]="{'urdu-options': language === 'ur'}">
                     {{ currentQuestion$.question }}
                 </p>
                 <mat-list>
                     <mat-list-item *ngFor="let eachOption of  currentQuestion$.options; let i = index" 
-                        class="option-container urdu-text"
                         [ngClass]="{
                             'actualAnswer-button': i === actualAnswerIndex$,
                             'selectedAnswer-button': i === selectedAnswerIndex$,
@@ -26,7 +26,8 @@
                             [disabled]="!enableControl" 
                             (click)="onAnswerClick(i)"
                     >
-                        {{eachOption}}
+                    <p matLine 
+                    [ngClass]="{'urdu-options': language === 'ur'}"> {{eachOption}} </p>
                     </mat-list-item>
                 </mat-list>
             </div> 

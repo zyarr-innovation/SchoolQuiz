@@ -63,3 +63,9 @@
   color: black;
   /* Add other styles as needed */
 }
+
+.urdu-options {
+  --mdc-list-list-item-label-text-font: 'Noto Nastaliq Urdu', sans-serif !important;
+  direction: rtl;
+  unicode-bidi: embed;
+}

@@ -12,98 +12,112 @@ export enum tagStartStop {
   DISABLE = 0,
   START,
   STOP,
-};
+}
 
 export enum tagNextAns {
   DISABLE = 0,
   NEXT,
-  ANSWER
-};
+  ANSWER,
+}
 
 @Component({
   selector: 'app-admin',
-  imports:[CommonModule, MatCardModule, MatButtonModule, MatListModule],
+  imports: [CommonModule, MatCardModule, MatButtonModule, MatListModule],
   templateUrl: './admin.component.html',
-  styleUrl: './admin.component.css'
+  styleUrl: './admin.component.css',
 })
 export class AdminComponent {
+  language = 'en';
   enumstartStop = tagStartStop;
   enumNextAns = tagNextAns;
-  appNextState = tagStartStop.START
-  questNextState = tagNextAns.DISABLE
+  appNextState = tagStartStop.START;
+  questNextState = tagNextAns.DISABLE;
 
   socket = io(MessageConstant.baseUrl);
   actualAnswerIndex$ = -1;
 
-  currentMessage$: string = "Welcome to the ZYInnovators Quiz Competition! Get ready to challenge your knowledge. Remember, it's not just about winning. Think, learn, and have fun! Enjoy the learning journey!"
+  currentMessage$: string =
+    "Welcome to the ZYInnovators Quiz Competition! Get ready to challenge your knowledge. Remember, it's not just about winning. Think, learn, and have fun! Enjoy the learning journey!";
   currentQuestion$: IQuestion = {
     id: 0,
-    question: "Welcome to the ZYInnovators Quiz Competition!",
-    options: ["Get ready to challenge your knowledge", "Remember, it's not just about winning", "Think, learn, and have fun!", "Enjoy the learning journey!"],
-    answer: -100
-  }
+    question: 'Welcome to the ZYInnovators Quiz Competition!',
+    options: [
+      'Get ready to challenge your knowledge',
+      "Remember, it's not just about winning",
+      'Think, learn, and have fun!',
+      'Enjoy the learning journey!',
+    ],
+    answer: -100,
+  };
 
-  constructor(private quizService: QuizService) {
-  }
+  constructor(private quizService: QuizService) {}
 
   ngOnInit(): void {
+    this.getLanguageInfo();
 
     this.socket.on(MessageConstant.msgNextQuestion, (data) => {
-      this.currentMessage$ = "";
-      this.actualAnswerIndex$ = -1
+      this.currentMessage$ = '';
+      this.actualAnswerIndex$ = -1;
       this.currentQuestion$ = data;
-      this.nextState()
-    })
+      this.nextState();
+    });
     this.socket.on(MessageConstant.msgStartQuiz, (data) => {
       this.currentMessage$ = data;
-      this.startState()
-    })
+      this.startState();
+    });
     this.socket.on(MessageConstant.msgStopQuiz, (data) => {
       this.currentMessage$ = data;
-      this.stopState()
-    })
+      this.stopState();
+    });
     this.socket.on(MessageConstant.msgError, (error) => {
       console.error('Socket error:', error);
-      this.stopState()
+      this.stopState();
     });
     this.socket.on(MessageConstant.msgAnswerQuestion, (data) => {
-      console.log(data)
-      this.actualAnswerIndex$ = +data -1;
-      this.answerState()
-    })
+      console.log(data);
+      this.actualAnswerIndex$ = +data - 1;
+      this.answerState();
+    });
   }
 
   startState() {
-    this.appNextState = tagStartStop.STOP
-    this.questNextState = tagNextAns.ANSWER
+    this.appNextState = tagStartStop.STOP;
+    this.questNextState = tagNextAns.ANSWER;
   }
   stopState() {
-    this.appNextState = tagStartStop.START
-    this.questNextState = tagNextAns.DISABLE
+    this.appNextState = tagStartStop.START;
+    this.questNextState = tagNextAns.DISABLE;
   }
   nextState() {
-    this.appNextState = tagStartStop.DISABLE
-    this.questNextState = tagNextAns.ANSWER
+    this.appNextState = tagStartStop.DISABLE;
+    this.questNextState = tagNextAns.ANSWER;
   }
   answerState() {
-    this.appNextState = tagStartStop.STOP
-    this.questNextState = tagNextAns.NEXT
+    this.appNextState = tagStartStop.STOP;
+    this.questNextState = tagNextAns.NEXT;
+  }
+
+  getLanguageInfo() {
+    this.quizService.getLanguageInfo().subscribe((data: any) => {
+      console.log(data);
+      this.language = data?.message?.language;
+    });
   }
 
   startQuiz() {
-    this.quizService.startQuiz().subscribe(console.log)
+    this.quizService.startQuiz().subscribe(console.log);
   }
- 
+
   stopQuiz() {
-    this.quizService.stopQuiz().subscribe(console.log)
+    this.quizService.stopQuiz().subscribe(console.log);
   }
 
   nextQuiz() {
     this.actualAnswerIndex$ = -1;
-    this.quizService.nextQuestion().subscribe(console.log)
+    this.quizService.nextQuestion().subscribe(console.log);
   }
 
   answerQuiz() {
-    this.quizService.anwerQuestion().subscribe(console.log)
+    this.quizService.anwerQuestion().subscribe(console.log);
   }
 }

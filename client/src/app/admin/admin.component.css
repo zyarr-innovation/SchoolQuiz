@@ -56,3 +56,8 @@ button {
   /* Add other styles as needed */
 }
 
+.urdu-options {
+  font-family: 'Noto Nastaliq Urdu', sans-serif !important;
+  direction: rtl !important;
+  unicode-bidi: embed !important;
+}
