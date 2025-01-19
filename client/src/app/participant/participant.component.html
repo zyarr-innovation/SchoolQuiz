@@ -12,9 +12,10 @@
             <div *ngIf="currentMessage$">
                 {{currentMessage$}}
             </div>
-            <div *ngIf="!currentMessage$" class="sub-card-block">
+            <div *ngIf="!currentMessage$" class="question-block">
                 <p  matLine
-                   [ngClass]="{'urdu-options': language === 'ur'}">
+                   [ngClass]="{'urdu-options': language === 'ur'}"
+                   class="multiline-text">
                     {{ currentQuestion$.question }}
                 </p>
                 <mat-list>
@@ -23,11 +24,13 @@
                             'actualAnswer-button': i === actualAnswerIndex$,
                             'selectedAnswer-button': i === selectedAnswerIndex$,
                             'sameAnswer-button': i === actualAnswerIndex$ && i === selectedAnswerIndex$}"
-                            [disabled]="!enableControl" 
-                            (click)="onAnswerClick(i)"
+                        [disabled]="!enableControl" 
+                        (click)="onAnswerClick(i)"
+                        class="question-options"
                     >
                     <p matLine 
-                    [ngClass]="{'urdu-options': language === 'ur'}"> {{eachOption}} </p>
+                    [ngClass]="{'urdu-options': language === 'ur'}"
+                    class="multiline-text"> {{eachOption}} </p>
                     </mat-list-item>
                 </mat-list>
             </div> 

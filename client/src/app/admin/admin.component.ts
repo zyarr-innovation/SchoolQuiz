@@ -7,6 +7,7 @@ import { io } from 'socket.io-client';
 import { MessageConstant } from '../../../../model/msg-const';
 import { IQuestion } from '../../../../model/model';
 import { QuizService } from '../quiz.service';
+import { MatLineModule } from '@angular/material/core';
 
 export enum tagStartStop {
   DISABLE = 0,
@@ -22,7 +23,13 @@ export enum tagNextAns {
 
 @Component({
   selector: 'app-admin',
-  imports: [CommonModule, MatCardModule, MatButtonModule, MatListModule],
+  imports: [
+    CommonModule,
+    MatCardModule,
+    MatButtonModule,
+    MatListModule,
+    MatLineModule,
+  ],
   templateUrl: './admin.component.html',
   styleUrl: './admin.component.css',
 })

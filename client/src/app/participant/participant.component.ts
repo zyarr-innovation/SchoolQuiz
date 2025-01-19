@@ -121,7 +121,6 @@ export class ParticipantComponent {
 
   getLanguageInfo() {
     this.quizService.getLanguageInfo().subscribe((data: any) => {
-      console.log(data);
       this.language = data?.message?.language;
     });
   }

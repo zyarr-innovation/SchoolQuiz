@@ -6,27 +6,33 @@
 }
 
 .main-card {
-  width: 70%; /* Adjust the width of the main card */
+  width: 70%;
   padding: 20px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
 }
 
-.main-card-header {
+.main-card-header, .main-card-actions {
   display: flex;
-  justify-content: center; /* Horizontally center the content */
-  align-items: center; /* Vertically center the content */
-  text-align: center; /* Ensure text is centered */
+  justify-content: center;
+  align-items: center;
 }
- 
-.sub-card-block {
+
+.main-card-actions {
+  margin-top: 20px;
+  gap: 10px;
+}
+
+.question-block {
   width: 100%;
   margin: 5px;
 }
 
-mat-list-item {
-  width: 100%; /* Ensures the list item takes up the full width */
-  padding: 15px;
+.question-options {
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+  height: auto; 
   margin: 5px 0;
   cursor: pointer;
   background-color: white;
@@ -35,25 +41,36 @@ mat-list-item {
   color: #000;
   box-sizing: border-box;
   font-size: 1.3rem;
+  overflow:unset;
 }
 
-.main-card-actions {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 20px;
-  gap: 10px;
+.multiline-text {
+  display: block;
+  height: auto;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 button {
-  width: 100px; /* Optional: Adjust button width */
+  width: 100px;
+}
+
+.actualAnswer-button, .selectedAnswer-button, .sameAnswer-button {
+  color: black;
 }
 
 .actualAnswer-button {
-  /* Add styles to highlight the button */
   background-color: yellow;
-  color: black;
-  /* Add other styles as needed */
+}
+
+.selectedAnswer-button {
+  background-color: blueviolet;
+}
+
+.sameAnswer-button {
+  background-color: green;
 }
 
 .urdu-options {

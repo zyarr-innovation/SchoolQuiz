@@ -1,71 +1,81 @@
 .main-class {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
 
-  .main-card {
-    width: 70%; /* Adjust the width of the main card */
-    padding: 20px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-  }
+.main-card {
+  width: 70%;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
 
-  .main-card-header {
-    display: flex;
-    justify-content: center; /* Horizontally center the content */
-    align-items: center; /* Vertically center the content */
-    text-align: center; /* Ensure text is centered */
-    
-  }
- 
-  .main-card-subtitle {
-    display: flex;
-    justify-content:space-between;
-  }
+.main-card-header, .main-card-subtitle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-  .sub-card-block {
-    width: 100%;
-    margin: 5px;
-  }
+.main-card-subtitle {
+  justify-content: space-between;
+}
 
-  mat-list-item {
-    width: 100%; /* Ensures the list item takes up the full width */
-    padding: 15px;
-    margin: 5px 0;
-    cursor: pointer;
-    background-color: white;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    color: #000;
-    box-sizing: border-box;
-    font-size: 1.3rem;
-  }
-  
-.actualAnswer-button {
-  /* Add styles to highlight the button */
-  background-color: yellow;
+.question-block {
+  width: 100%;
+  margin: 5px;
+}
+
+.question-options {
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+  height: auto; 
+  margin: 5px 0;
+  cursor: pointer;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  color: #000;
+  box-sizing: border-box;
+  font-size: 1.3rem;
+  overflow:unset;
+}
+
+.multiline-text {
+  display: block;
+  height: auto;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+.main-card-content {
+  display: flex;
+  flex-direction: column;
+  height: auto;
+}
+
+.actualAnswer-button, .selectedAnswer-button, .sameAnswer-button {
   color: black;
-  /* Add other styles as needed */
+}
+
+.actualAnswer-button {
+  background-color: yellow;
 }
 
 .selectedAnswer-button {
-  /* Add styles to highlight the button */
   background-color: blueviolet;
-  color: black;
-  /* Add other styles as needed */
 }
 
 .sameAnswer-button {
-  /* Add styles to highlight the button */
-  background-color:  green;
-  color: black;
-  /* Add other styles as needed */
+  background-color: green;
 }
 
 .urdu-options {
-  --mdc-list-list-item-label-text-font: 'Noto Nastaliq Urdu', sans-serif !important;
-  direction: rtl;
-  unicode-bidi: embed;
+  font-family: 'Noto Nastaliq Urdu', sans-serif !important;
+  direction: rtl !important;
+  unicode-bidi: embed !important;
 }
