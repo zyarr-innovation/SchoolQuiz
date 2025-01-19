@@ -52,14 +52,14 @@
 
 .selectedAnswer-button {
   /* Add styles to highlight the button */
-  background-color: green;
+  background-color: blueviolet;
   color: black;
   /* Add other styles as needed */
 }
 
 .sameAnswer-button {
   /* Add styles to highlight the button */
-  background-color: blueviolet;
+  background-color:  green;
   color: black;
   /* Add other styles as needed */
 }
