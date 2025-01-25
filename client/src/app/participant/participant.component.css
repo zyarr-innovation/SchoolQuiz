@@ -1,3 +1,4 @@
+/* General Styling for Consistency */
 .main-class {
   display: flex;
   justify-content: center;
@@ -8,39 +9,99 @@
 .main-card {
   width: 70%;
   padding: 20px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
+  background: white;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
-.main-card-header, .main-card-subtitle {
+.main-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.main-card-header {
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
+  background-color: #80deea;
+  padding: 15px;
+  border-radius: 8px 8px 0 0;
+  color: #004d40;
+}
+
+.main-card-title {
+  font-size: 32px;
+  font-weight: bold;
 }
 
 .main-card-subtitle {
+  display: flex;
   justify-content: space-between;
+  font-size: 20px;
+  color: #00796b;
+  margin-top: 10px;
+}
+
+.main-card-subtitle > div {
+  margin: 0 5px;
+}
+
+.main-card-content {
+  display: flex;
+  flex-direction: column;
+  font-size: 17px;
+  margin-top: 15px;
 }
 
 .question-block {
   width: 100%;
-  margin: 5px;
+  margin: 10px 0;
+  padding: 15px;
+  background: #e0f2f1;
+  border-radius: 8px;
 }
 
 .question-options {
   display: flex;
   align-items: flex-start;
   width: 100%;
-  height: auto; 
-  margin: 5px 0;
+  height: auto;
+  margin: 8px 0;
   cursor: pointer;
-  background-color: white;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  color: #000;
-  box-sizing: border-box;
+  background-color: #ffffff;
+  border: 1px solid #b2dfdb;
+  border-radius: 8px;
+  color: #004d40;
   font-size: 1.3rem;
-  overflow:unset;
+  transition: box-shadow 0.3s, transform 0.2s;
+}
+
+.question-options:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+/* Correct Answer */
+.actualAnswer-button {
+  background-color: #388e3c; /* Green */
+  font-weight: bold;
+  color: white;
+}
+
+/* Selected Answer */
+.selectedAnswer-button {
+  background-color: #1976d2; /* Blue */
+  font-weight: bold;
+  color: white;
+}
+
+/* Incorrect Answer */
+.sameAnswer-button {
+  background-color: #d32f2f; /* Red */
+  font-weight: bold;
+  color: white;
 }
 
 .multiline-text {
@@ -50,32 +111,64 @@
   word-wrap: break-word;
   overflow-wrap: break-word;
   word-break: break-word;
-}
-
-.main-card-content {
-  display: flex;
-  flex-direction: column;
-  height: auto;
-}
-
-.actualAnswer-button, .selectedAnswer-button, .sameAnswer-button {
-  color: black;
-}
-
-.actualAnswer-button {
-  background-color: yellow;
-}
-
-.selectedAnswer-button {
-  background-color: blueviolet;
-}
-
-.sameAnswer-button {
-  background-color: green;
+  line-height: 1.6;
 }
 
 .urdu-options {
   font-family: 'Noto Nastaliq Urdu', sans-serif !important;
   direction: rtl !important;
   unicode-bidi: embed !important;
+}
+
+/* Responsive Design for Mobile and Smaller Screens */
+@media (max-width: 768px) {
+  .main-card {
+    width: 90%;
+    padding: 15px;
+  }
+
+  .main-card-title {
+    font-size: 28px;
+  }
+
+  .main-card-subtitle {
+    font-size: 18px;
+  }
+
+  .main-card-content {
+    font-size: 16px;
+  }
+
+  .question-options {
+    font-size: 1.2rem;
+  }
+
+  .multiline-text {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-card {
+    width: 95%;
+    padding: 10px;
+  }
+
+  .main-card-title {
+    font-size: 24px;
+  }
+
+  .main-card-subtitle {
+    font-size: 16px;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .question-options {
+    font-size: 1.1rem;
+  }
+
+  .multiline-text {
+    font-size: 1rem;
+  }
 }

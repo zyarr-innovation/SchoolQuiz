@@ -1,64 +1,123 @@
+/* General Styling for Consistency */
 .main-class {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .main-card {
-    width: 95%;
-    padding: 20px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-  }
-  
-  .main-card-header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-  }
-  
-  .sub-card-block {
-    width: 100%;
-    margin: 5px;
-  }
-  
-  mat-list-item {
-    width: 100%;
-    padding: 15px;
-    margin: 5px 0;
-    background-color: white;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    color: #000;
-    box-sizing: border-box;
-    font-size: 1.3rem;
-  }
-  
-  .list-item-container {
-    display: flex; /* Flexbox for horizontal alignment */
-    justify-content: space-between; /* Name on the left, score on the right */
-    align-items: center; /* Vertically align items */
-    width: 100%;
-  }
-  
-  .class-name {
-    flex: 1; 
-    width: 90%;
-    text-align: left;
-  }
-  
-  .class-score {
-    width: 5%; 
-  }
-  
-  .delete-icon {
-    cursor: pointer;
-    color: red; /* Icon color */
-    font-size: 24px; /* Adjust the size of the icon */
-    transition: color 0.2s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.main-card {
+  width: 95%;
+  padding: 20px;
+  background: white;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.main-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.main-card-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: #80deea;
+  padding: 15px;
+  border-radius: 8px 8px 0 0;
+  color: #004d40;
+}
+
+.main-card-title {
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.main-card-subtitle {
+  font-size: 20px;
+  color: #00796b;
+  margin-top: 10px;
+}
+
+.sub-card-block {
+  width: 100%;
+  margin: 5px;
+}
+
+mat-list-item {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0;
+  background-color: white;
+  border: 1px solid #b2dfdb;
+  border-radius: 8px;
+  color: #004d40;
+  box-sizing: border-box;
+  font-size: 1.3rem;
+  transition: box-shadow 0.3s, transform 0.2s;
+}
+
+mat-list-item:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+.list-item-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.class-name {
+  flex: 1;
+  width: 90%;
+  text-align: left;
+}
+
+.class-score {
+  width: 5%;
+}
+
+.delete-icon {
+  cursor: pointer;
+  color: red;
+  font-size: 24px;
+  transition: color 0.2s;
 }
 
 .delete-icon:hover {
-    color: darkred; /* Darker red on hover */
+  color: darkred;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .main-card {
+    width: 90%;
+    padding: 15px;
+  }
+
+  .main-card-header {
+    padding: 10px;
+  }
+
+  .main-card-title {
+    font-size: 28px;
+  }
+
+  .main-card-subtitle {
+    font-size: 16px;
+  }
+
+  mat-list-item {
+    font-size: 1.1rem;
+    padding: 10px;
+  }
+
+  .delete-icon {
+    font-size: 20px;
+  }
 }

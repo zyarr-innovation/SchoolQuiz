@@ -1,3 +1,12 @@
+/* General Styling for a Soothing Look */
+body {
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(120deg, #e0f7fa, #80deea);
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .main-class {
   display: flex;
   justify-content: center;
@@ -8,40 +17,109 @@
 .main-card {
   width: 70%;
   padding: 20px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
+  background: white;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
-.main-card-header, .main-card-actions {
+.main-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.main-card-header {
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: #80deea;
+  padding: 15px;
+  border-radius: 8px 8px 0 0;
+  color: #004d40;
+}
+
+.main-card-title {
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.main-card-subtitle {
+  font-size: 18px;
+  color: #00796b;
+}
+
+.main-card-content {
+  padding: 20px;
+  font-size: 18px;
+  color: #333;
 }
 
 .main-card-actions {
   margin-top: 20px;
   gap: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+button {
+  width: 120px;
+  height: 40px;
+  border-radius: 6px;
+  font-weight: bold;
+  color: white;
+  background-color: #00796b;
+  transition: background-color 0.3s, color 0.3s, transform 0.2s;
+}
+
+button:hover {
+  background-color: #005b50;
+  color: #e0f7fa;
+  transform: scale(1.05);
 }
 
 .question-block {
   width: 100%;
-  margin: 5px;
+  margin: 10px 0;
+  padding: 15px;
+  background: #e0f2f1;
+  border-radius: 8px;
 }
 
 .question-options {
   display: flex;
   align-items: flex-start;
   width: 100%;
-  height: auto; 
-  margin: 5px 0;
+  height: auto;
+  margin: 8px 0;
   cursor: pointer;
-  background-color: white;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  color: #000;
-  box-sizing: border-box;
+  background-color: #ffffff;
+  border: 1px solid #b2dfdb;
+  border-radius: 8px;
+  color: #004d40;
   font-size: 1.3rem;
-  overflow:unset;
+  transition: box-shadow 0.3s, transform 0.2s;
+}
+
+.question-options:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+.actualAnswer-button {
+  background-color: #ffeb3b;
+  font-weight: bold;
+}
+
+.selectedAnswer-button {
+  background-color: #7e57c2;
+  font-weight: bold;
+  color: white;
+}
+
+.sameAnswer-button {
+  background-color: #388e3c;
+  font-weight: bold;
+  color: white;
 }
 
 .multiline-text {
@@ -51,30 +129,71 @@
   word-wrap: break-word;
   overflow-wrap: break-word;
   word-break: break-word;
-}
-
-button {
-  width: 100px;
-}
-
-.actualAnswer-button, .selectedAnswer-button, .sameAnswer-button {
-  color: black;
-}
-
-.actualAnswer-button {
-  background-color: yellow;
-}
-
-.selectedAnswer-button {
-  background-color: blueviolet;
-}
-
-.sameAnswer-button {
-  background-color: green;
+  line-height: 1.6;
 }
 
 .urdu-options {
   font-family: 'Noto Nastaliq Urdu', sans-serif !important;
   direction: rtl !important;
   unicode-bidi: embed !important;
+}
+
+/* Responsive Design for Mobile and Smaller Screens */
+@media (max-width: 768px) {
+  .main-card {
+    width: 90%; /* Make the card width more suitable for smaller screens */
+    padding: 15px;
+  }
+
+  .main-card-title {
+    font-size: 28px; /* Slightly smaller font size for titles */
+  }
+
+  .main-card-subtitle {
+    font-size: 16px; /* Adjust subtitle font size */
+  }
+
+  .main-card-content {
+    font-size: 16px; /* Adjust content font size */
+  }
+
+  .question-options {
+    font-size: 1.2rem; /* Slightly smaller font size for options */
+  }
+
+  .multiline-text {
+    font-size: 1.1rem; /* Adjust multiline text font size for readability */
+  }
+
+  button {
+    width: 100px; /* Adjust button width for mobile screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .main-card {
+    width: 95%; /* Further adjustment for very small screens */
+    padding: 10px;
+  }
+
+  .main-card-title {
+    font-size: 24px; /* Even smaller font size for mobile screens */
+  }
+
+  .main-card-subtitle {
+    font-size: 14px; /* Adjust subtitle font size */
+    text-align: center; /* Center-align subtitle content */
+  }
+
+  .question-options {
+    font-size: 1.1rem; /* Adjust options font size for smaller screens */
+  }
+
+  .multiline-text {
+    font-size: 1rem; /* Reduce font size for multiline text on mobile */
+  }
+
+  button {
+    width: 90px; /* Further reduce button width for smaller screens */
+  }
 }

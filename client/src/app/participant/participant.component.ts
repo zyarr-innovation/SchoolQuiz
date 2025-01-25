@@ -33,7 +33,7 @@ export class ParticipantComponent {
   participantRemoved = false; // New flag for UI dimming
 
   currentMessage$: string =
-    "Welcome to the ZYInnovators Quiz Competition! Get ready to challenge your knowledge. Remember, it's not just about winning. Think, learn, and have fun! Enjoy the learning journey!";
+    "Welcome to the ZY Innovators Quiz Competition! Get ready to challenge your knowledge. Remember, it's not just about winning. Think, learn, and have fun! Enjoy the learning journey!";
   currentQuestion$: IQuestion = {
     id: 0,
     question: 'Welcome to the ZYInnovators Quiz Competition!',

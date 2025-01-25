@@ -1,14 +1,23 @@
+/* General Styling for Consistency */
 .main-class {
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 100vh;
 }
 
 .main-card {
   width: 95%;
   padding: 20px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
+  background: white;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.main-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
 }
 
 .main-card-header {
@@ -16,38 +25,131 @@
   justify-content: center;
   align-items: center;
   text-align: center;
+  background-color: #80deea;
+  padding: 15px;
+  border-radius: 8px 8px 0 0;
+  color: #004d40;
+}
+
+.main-card-title {
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.main-card-subtitle {
+  font-size: 18px;
+  color: #00796b;
 }
 
 .sub-card-block {
   width: 100%;
-  margin: 5px;
+  margin: 10px 0;
+  padding: 15px;
+  background: #e0f2f1;
+  border-radius: 8px;
 }
 
 mat-list-item {
   width: 100%;
   padding: 15px;
-  margin: 5px 0;
-  background-color: white;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  color: #000;
-  box-sizing: border-box;
+  margin: 8px 0;
+  background-color: #ffffff;
+  border: 1px solid #b2dfdb;
+  border-radius: 8px;
+  color: #004d40;
   font-size: 1.3rem;
+  transition: box-shadow 0.3s, transform 0.2s;
+}
+
+mat-list-item:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
 }
 
 .list-item-container {
-  display: flex; /* Flexbox for horizontal alignment */
-  justify-content: space-between; /* Name on the left, score on the right */
-  align-items: center; /* Vertically align items */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   width: 100%;
 }
 
 .class-name {
-  flex: 1; 
+  flex: 1;
   width: 90%;
   text-align: left;
+  font-weight: bold;
+  color: #004d40;
 }
 
 .class-score {
-  width: 5%; 
+  width: 10%;
+  text-align: right;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #00796b;
+}
+
+/* Responsive Design for Mobile and Smaller Screens */
+@media (max-width: 768px) {
+  .main-card {
+    width: 90%; /* Adjust width for smaller screens */
+    padding: 15px;
+  }
+
+  .main-card-title {
+    font-size: 28px; /* Adjust font size for titles */
+  }
+
+  .main-card-subtitle {
+    font-size: 16px; /* Adjust subtitle font size */
+  }
+
+  .sub-card-block {
+    padding: 12px; /* Adjust padding for smaller screens */
+  }
+
+  mat-list-item {
+    font-size: 1.1rem; /* Adjust font size for list items */
+  }
+
+  .class-name {
+    font-size: 1.1rem; /* Slightly reduce font size for class names */
+  }
+
+  .class-score {
+    font-size: 1.1rem; /* Adjust font size for class score */
+  }
+}
+
+@media (max-width: 480px) {
+  .main-card {
+    width: 95%; /* Further adjust card width */
+    padding: 10px;
+  }
+
+  .main-card-title {
+    font-size: 24px; /* Smaller title font size */
+  }
+
+  .main-card-subtitle {
+    font-size: 14px; /* Smaller subtitle font size */
+    text-align: center; /* Center-align subtitle */
+  }
+
+  .sub-card-block {
+    padding: 10px; /* Further reduce padding */
+  }
+
+  mat-list-item {
+    font-size: 1rem; /* Reduce font size for list items */
+    padding: 12px; /* Adjust padding */
+  }
+
+  .class-name {
+    font-size: 1rem; /* Smaller font size for class names */
+  }
+
+  .class-score {
+    font-size: 1rem; /* Smaller font size for class score */
+  }
 }
