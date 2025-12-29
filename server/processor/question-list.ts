@@ -12,7 +12,7 @@ export class QuestionList {
 
   constructor() {
     this.questionCollection = new QuestionCollection();
-    this.language = "ur";
+    this.language = process.env.language ?? "en";
     this.getQuestions().subscribe((data) => (this.questionList = data));
   }
 

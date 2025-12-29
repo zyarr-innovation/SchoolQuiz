@@ -80,7 +80,7 @@ export class App {
 
   private setupCORS(): void {
     const corsOptions = {
-      origin: ["http://localhost:3000", "http://localhost:4200"], // Allow requests from this origin
+      origin: ["http://0.0.0.0:3000", "http://0.0.0.0:4200"], // Allow requests from this origin
       methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"], // Allowed HTTP methods
       allowedHeaders: ["Content-Type", "Authorization"], // Allowed headers
       credentials: true, // Allow credentials (cookies, etc.)
@@ -149,7 +149,7 @@ export class App {
   }
 
   public start() {
-    this.server.listen(this.port, () => {
+    this.server.listen(this.port, '0.0.0.0', () => {
       console.log(`Server running on port ${this.port}`);
     });
   }

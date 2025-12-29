@@ -93,24 +93,15 @@ export class ParticipantList {
     return retValue;
   }
 
-  remove(inParticipan: IParticipant): boolean {
-    let retValue = false;
-    let foundParticipant = this.participantList.find(
-      eachParticipant => eachParticipant.name == inParticipan.name
-    );
-
-    if (foundParticipant) {
-      if(this.participantList.length == 1){
-        this.participantList = [];
-      } else {
-        this.participantList.splice(foundParticipant.id, foundParticipant.id + 1);
-      }
-      
-      this.io.emit(MessageConstant.apiRemoveParticipant, foundParticipant);
-      retValue = true;
+  remove(inParticipant: IParticipant): boolean {
+    const index = this.participantList.findIndex(p => p.name === inParticipant.name);
+    
+    if (index !== -1) {
+      const removed = this.participantList.splice(index, 1)[0];
+      this.io.emit(MessageConstant.apiRemoveParticipant, removed);
+      return true;
     }
-
-    return retValue;
+    return false;
   }
 
   getList(): IParticipant[] {

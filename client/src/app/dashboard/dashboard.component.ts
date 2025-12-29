@@ -6,6 +6,7 @@ import { MessageConstant } from '../../../../model/msg-const';
 import { io } from 'socket.io-client';
 import { IParticipant } from '../../../../model/model';
 import { QuizService } from '../quiz.service';
+import { Subject, switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-dashboard',
@@ -15,22 +16,25 @@ import { QuizService } from '../quiz.service';
 })
 export class DashboardComponent {
   socket = io(MessageConstant.baseUrl);
+  private refresh$ = new Subject<void>();
   participantList$: IParticipant[] = []
 
   constructor(private quizService: QuizService) {
   }
 
   ngOnInit(): void {
-    this.getParticipantList();
-    this.socket.on(MessageConstant.msgUpdateDashboard, (data) => {
-      setTimeout(async () => this.getParticipantList(), 1000);
+    this.refresh$.pipe(
+      switchMap(() => this.quizService.fetchParticipants())
+    ).subscribe(data => {
+      this.participantList$ = data;
     });
-    this.socket.on(MessageConstant.apiAddParticipant, (data) => {
-      setTimeout(async () => this.getParticipantList(), 1000);
-    });
-    this.socket.on(MessageConstant.apiRemoveParticipant, (data) => {
-      setTimeout(async () => this.getParticipantList(), 1000);
-    });
+
+    this.refresh$.next();
+    const handleUpdate = () => this.refresh$.next();
+
+    this.socket.on(MessageConstant.msgUpdateDashboard, handleUpdate);
+    this.socket.on(MessageConstant.apiAddParticipant, handleUpdate);
+    this.socket.on(MessageConstant.apiRemoveParticipant, handleUpdate);
   }
 
   getParticipantList() {
